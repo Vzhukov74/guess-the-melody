@@ -27,7 +27,6 @@
 		F50BFEA520A0804E002B299A /* GTMGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFEA420A0804E002B299A /* GTMGameModel.swift */; };
 		F50BFEA720A09694002B299A /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFEA620A09693002B299A /* AnswerView.swift */; };
 		F50BFEA920A18EB6002B299A /* AnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFEA820A18EB6002B299A /* AnswersView.swift */; };
-		F5118E8620A1C48100C2D023 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = F5118E8520A1C48100C2D023 /* questions.json */; };
 		F5118E8920A1C4CB00C2D023 /* GTMCameLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118E8820A1C4CB00C2D023 /* GTMCameLevel.swift */; };
 		F5118E8C20A1C83F00C2D023 /* GTMStaticDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118E8B20A1C83F00C2D023 /* GTMStaticDataStore.swift */; };
 		F5118E9E20A1C9B600C2D023 /* CoreDataExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118E9D20A1C9B600C2D023 /* CoreDataExt.swift */; };
@@ -40,6 +39,7 @@
 		F5118EAE20A1D31D00C2D023 /* GTMAnswerCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA620A1D31C00C2D023 /* GTMAnswerCD+CoreDataClass.swift */; };
 		F5118EAF20A1D31D00C2D023 /* GTMQuestionCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA720A1D31D00C2D023 /* GTMQuestionCD+CoreDataProperties.swift */; };
 		F5118EB020A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA820A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift */; };
+		F5118EB220A1E84D00C2D023 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = F5118EB120A1E84D00C2D023 /* questions.json */; };
 		F594087D20A1C19E00AAAAD0 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = F594087C20A1C19E00AAAAD0 /* levels.json */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,6 @@
 		F50BFEA420A0804E002B299A /* GTMGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMGameModel.swift; sourceTree = "<group>"; };
 		F50BFEA620A09693002B299A /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
 		F50BFEA820A18EB6002B299A /* AnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersView.swift; sourceTree = "<group>"; };
-		F5118E8520A1C48100C2D023 /* questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = questions.json; path = "../../guess-the-melody/guess the melody/questions.json"; sourceTree = "<group>"; };
 		F5118E8820A1C4CB00C2D023 /* GTMCameLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMCameLevel.swift; sourceTree = "<group>"; };
 		F5118E8B20A1C83F00C2D023 /* GTMStaticDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMStaticDataStore.swift; sourceTree = "<group>"; };
 		F5118E9D20A1C9B600C2D023 /* CoreDataExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExt.swift; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		F5118EA620A1D31C00C2D023 /* GTMAnswerCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMAnswerCD+CoreDataClass.swift"; path = "guess the melody/database/database models/GTMAnswerCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F5118EA720A1D31D00C2D023 /* GTMQuestionCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMQuestionCD+CoreDataProperties.swift"; path = "guess the melody/database/database models/GTMQuestionCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F5118EA820A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMLevelStatCD+CoreDataProperties.swift"; path = "guess the melody/database/database models/GTMLevelStatCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F5118EB120A1E84D00C2D023 /* questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
 		F594087C20A1C19E00AAAAD0 /* levels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +152,7 @@
 				F50BFE7B209C85E8002B299A /* Info.plist */,
 				F50BFE73209C85E4002B299A /* guess_the_melody.xcdatamodeld */,
 				F594087C20A1C19E00AAAAD0 /* levels.json */,
-				F5118E8520A1C48100C2D023 /* questions.json */,
+				F5118EB120A1E84D00C2D023 /* questions.json */,
 			);
 			path = "guess the melody";
 			sourceTree = "<group>";
@@ -321,12 +321,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50BFE8F209C8763002B299A /* MenuViewController.storyboard in Resources */,
-				F5118E8620A1C48100C2D023 /* questions.json in Resources */,
 				F50BFE88209C8675002B299A /* MainNavigationController.storyboard in Resources */,
 				F50BFE93209C87DB002B299A /* GameViewController.storyboard in Resources */,
 				F50BFE7A209C85E8002B299A /* LaunchScreen.storyboard in Resources */,
 				F594087D20A1C19E00AAAAD0 /* levels.json in Resources */,
 				F50BFE77209C85E8002B299A /* Assets.xcassets in Resources */,
+				F5118EB220A1E84D00C2D023 /* questions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
