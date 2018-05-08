@@ -1,0 +1,615 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF3585AC57C2668A8E4C74E5 /* Pods_guess_the_melody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */; };
+		F50BFE6D209C85E4002B299A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE6C209C85E4002B299A /* AppDelegate.swift */; };
+		F50BFE75209C85E4002B299A /* guess_the_melody.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE73209C85E4002B299A /* guess_the_melody.xcdatamodeld */; };
+		F50BFE77209C85E8002B299A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50BFE76209C85E8002B299A /* Assets.xcassets */; };
+		F50BFE7A209C85E8002B299A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50BFE78209C85E8002B299A /* LaunchScreen.storyboard */; };
+		F50BFE86209C8667002B299A /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE85209C8667002B299A /* MainNavigationController.swift */; };
+		F50BFE88209C8675002B299A /* MainNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50BFE87209C8675002B299A /* MainNavigationController.storyboard */; };
+		F50BFE8B209C86C2002B299A /* StoryboardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE8A209C86C2002B299A /* StoryboardList.swift */; };
+		F50BFE8D209C875A002B299A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE8C209C875A002B299A /* MenuViewController.swift */; };
+		F50BFE8F209C8763002B299A /* MenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50BFE8E209C8763002B299A /* MenuViewController.storyboard */; };
+		F50BFE91209C87D0002B299A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE90209C87D0002B299A /* GameViewController.swift */; };
+		F50BFE93209C87DB002B299A /* GameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50BFE92209C87DB002B299A /* GameViewController.storyboard */; };
+		F50BFE96209C89C5002B299A /* MusicPlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE95209C89C5002B299A /* MusicPlateView.swift */; };
+		F50BFE98209C8AA0002B299A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE97209C8AA0002B299A /* Constants.swift */; };
+		F50BFE9C209C8AFF002B299A /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE9B209C8AFF002B299A /* UIColorExt.swift */; };
+		F50BFE9E209C8B18002B299A /* CellExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE9D209C8B18002B299A /* CellExt.swift */; };
+		F50BFEA220A071FC002B299A /* AlbumImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFEA120A071FC002B299A /* AlbumImageView.swift */; };
+		F50BFEA520A0804E002B299A /* GTMGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFEA420A0804E002B299A /* GTMGameModel.swift */; };
+		F50BFEA720A09694002B299A /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFEA620A09693002B299A /* AnswerView.swift */; };
+		F50BFEA920A18EB6002B299A /* AnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFEA820A18EB6002B299A /* AnswersView.swift */; };
+		F5118E8620A1C48100C2D023 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = F5118E8520A1C48100C2D023 /* questions.json */; };
+		F5118E8920A1C4CB00C2D023 /* GTMCameLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118E8820A1C4CB00C2D023 /* GTMCameLevel.swift */; };
+		F5118E8C20A1C83F00C2D023 /* GTMStaticDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118E8B20A1C83F00C2D023 /* GTMStaticDataStore.swift */; };
+		F5118E9E20A1C9B600C2D023 /* CoreDataExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118E9D20A1C9B600C2D023 /* CoreDataExt.swift */; };
+		F5118EA020A1CA7E00C2D023 /* GTMCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118E9F20A1CA7E00C2D023 /* GTMCoreDataManager.swift */; };
+		F5118EA920A1D31D00C2D023 /* GTMQuestionCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA120A1D31B00C2D023 /* GTMQuestionCD+CoreDataClass.swift */; };
+		F5118EAA20A1D31D00C2D023 /* GTMLevelStatCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA220A1D31C00C2D023 /* GTMLevelStatCD+CoreDataClass.swift */; };
+		F5118EAB20A1D31D00C2D023 /* GTMLevelCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA320A1D31C00C2D023 /* GTMLevelCD+CoreDataProperties.swift */; };
+		F5118EAC20A1D31D00C2D023 /* GTMLevelCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA420A1D31C00C2D023 /* GTMLevelCD+CoreDataClass.swift */; };
+		F5118EAD20A1D31D00C2D023 /* GTMAnswerCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA520A1D31C00C2D023 /* GTMAnswerCD+CoreDataProperties.swift */; };
+		F5118EAE20A1D31D00C2D023 /* GTMAnswerCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA620A1D31C00C2D023 /* GTMAnswerCD+CoreDataClass.swift */; };
+		F5118EAF20A1D31D00C2D023 /* GTMQuestionCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA720A1D31D00C2D023 /* GTMQuestionCD+CoreDataProperties.swift */; };
+		F5118EB020A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA820A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift */; };
+		F594087D20A1C19E00AAAAD0 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = F594087C20A1C19E00AAAAD0 /* levels.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1930C1C2485FECD5B5333751 /* Pods-guess the melody.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guess the melody.debug.xcconfig"; path = "Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody.debug.xcconfig"; sourceTree = "<group>"; };
+		6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guess_the_melody.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0155088689067CA543C698E /* Pods-guess the melody.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guess the melody.release.xcconfig"; path = "Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody.release.xcconfig"; sourceTree = "<group>"; };
+		F50BFE69209C85E4002B299A /* guess the melody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "guess the melody.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F50BFE6C209C85E4002B299A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F50BFE74209C85E4002B299A /* guess_the_melody.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = guess_the_melody.xcdatamodel; sourceTree = "<group>"; };
+		F50BFE76209C85E8002B299A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F50BFE79209C85E8002B299A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F50BFE7B209C85E8002B299A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F50BFE85209C8667002B299A /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		F50BFE87209C8675002B299A /* MainNavigationController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainNavigationController.storyboard; sourceTree = "<group>"; };
+		F50BFE8A209C86C2002B299A /* StoryboardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardList.swift; sourceTree = "<group>"; };
+		F50BFE8C209C875A002B299A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		F50BFE8E209C8763002B299A /* MenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuViewController.storyboard; sourceTree = "<group>"; };
+		F50BFE90209C87D0002B299A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		F50BFE92209C87DB002B299A /* GameViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameViewController.storyboard; sourceTree = "<group>"; };
+		F50BFE95209C89C5002B299A /* MusicPlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlateView.swift; sourceTree = "<group>"; };
+		F50BFE97209C8AA0002B299A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F50BFE9B209C8AFF002B299A /* UIColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
+		F50BFE9D209C8B18002B299A /* CellExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellExt.swift; sourceTree = "<group>"; };
+		F50BFEA120A071FC002B299A /* AlbumImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumImageView.swift; sourceTree = "<group>"; };
+		F50BFEA420A0804E002B299A /* GTMGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMGameModel.swift; sourceTree = "<group>"; };
+		F50BFEA620A09693002B299A /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
+		F50BFEA820A18EB6002B299A /* AnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersView.swift; sourceTree = "<group>"; };
+		F5118E8520A1C48100C2D023 /* questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = questions.json; path = "../../guess-the-melody/guess the melody/questions.json"; sourceTree = "<group>"; };
+		F5118E8820A1C4CB00C2D023 /* GTMCameLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMCameLevel.swift; sourceTree = "<group>"; };
+		F5118E8B20A1C83F00C2D023 /* GTMStaticDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMStaticDataStore.swift; sourceTree = "<group>"; };
+		F5118E9D20A1C9B600C2D023 /* CoreDataExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExt.swift; sourceTree = "<group>"; };
+		F5118E9F20A1CA7E00C2D023 /* GTMCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMCoreDataManager.swift; sourceTree = "<group>"; };
+		F5118EA120A1D31B00C2D023 /* GTMQuestionCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMQuestionCD+CoreDataClass.swift"; path = "guess the melody/database/database models/GTMQuestionCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F5118EA220A1D31C00C2D023 /* GTMLevelStatCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMLevelStatCD+CoreDataClass.swift"; path = "guess the melody/database/database models/GTMLevelStatCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F5118EA320A1D31C00C2D023 /* GTMLevelCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMLevelCD+CoreDataProperties.swift"; path = "guess the melody/database/database models/GTMLevelCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F5118EA420A1D31C00C2D023 /* GTMLevelCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMLevelCD+CoreDataClass.swift"; path = "guess the melody/database/database models/GTMLevelCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F5118EA520A1D31C00C2D023 /* GTMAnswerCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMAnswerCD+CoreDataProperties.swift"; path = "guess the melody/database/database models/GTMAnswerCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F5118EA620A1D31C00C2D023 /* GTMAnswerCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMAnswerCD+CoreDataClass.swift"; path = "guess the melody/database/database models/GTMAnswerCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F5118EA720A1D31D00C2D023 /* GTMQuestionCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMQuestionCD+CoreDataProperties.swift"; path = "guess the melody/database/database models/GTMQuestionCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F5118EA820A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMLevelStatCD+CoreDataProperties.swift"; path = "guess the melody/database/database models/GTMLevelStatCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F594087C20A1C19E00AAAAD0 /* levels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F50BFE66209C85E4002B299A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF3585AC57C2668A8E4C74E5 /* Pods_guess_the_melody.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		137850A83F818ABA05FE395D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1930C1C2485FECD5B5333751 /* Pods-guess the melody.debug.xcconfig */,
+				C0155088689067CA543C698E /* Pods-guess the melody.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		66F74D26641EF6DF06CE903A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F50BFE60209C85E4002B299A = {
+			isa = PBXGroup;
+			children = (
+				F5118EA620A1D31C00C2D023 /* GTMAnswerCD+CoreDataClass.swift */,
+				F5118EA520A1D31C00C2D023 /* GTMAnswerCD+CoreDataProperties.swift */,
+				F5118EA420A1D31C00C2D023 /* GTMLevelCD+CoreDataClass.swift */,
+				F5118EA320A1D31C00C2D023 /* GTMLevelCD+CoreDataProperties.swift */,
+				F5118EA220A1D31C00C2D023 /* GTMLevelStatCD+CoreDataClass.swift */,
+				F5118EA820A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift */,
+				F5118EA120A1D31B00C2D023 /* GTMQuestionCD+CoreDataClass.swift */,
+				F5118EA720A1D31D00C2D023 /* GTMQuestionCD+CoreDataProperties.swift */,
+				F50BFE6B209C85E4002B299A /* guess the melody */,
+				F50BFE6A209C85E4002B299A /* Products */,
+				137850A83F818ABA05FE395D /* Pods */,
+				66F74D26641EF6DF06CE903A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F50BFE6A209C85E4002B299A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F50BFE69209C85E4002B299A /* guess the melody.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F50BFE6B209C85E4002B299A /* guess the melody */ = {
+			isa = PBXGroup;
+			children = (
+				F5118E8A20A1C7F200C2D023 /* database */,
+				F50BFEA320A08033002B299A /* model */,
+				F50BFE99209C8ADD002B299A /* developer */,
+				F50BFE81209C8611002B299A /* ui */,
+				F50BFE6C209C85E4002B299A /* AppDelegate.swift */,
+				F50BFE76209C85E8002B299A /* Assets.xcassets */,
+				F50BFE78209C85E8002B299A /* LaunchScreen.storyboard */,
+				F50BFE7B209C85E8002B299A /* Info.plist */,
+				F50BFE73209C85E4002B299A /* guess_the_melody.xcdatamodeld */,
+				F594087C20A1C19E00AAAAD0 /* levels.json */,
+				F5118E8520A1C48100C2D023 /* questions.json */,
+			);
+			path = "guess the melody";
+			sourceTree = "<group>";
+		};
+		F50BFE81209C8611002B299A /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				F50BFE83209C8623002B299A /* game */,
+				F50BFE82209C8618002B299A /* menu */,
+				F50BFE84209C863B002B299A /* main */,
+				F50BFE89209C869B002B299A /* common */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		F50BFE82209C8618002B299A /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				F50BFE8C209C875A002B299A /* MenuViewController.swift */,
+				F50BFE8E209C8763002B299A /* MenuViewController.storyboard */,
+			);
+			path = menu;
+			sourceTree = "<group>";
+		};
+		F50BFE83209C8623002B299A /* game */ = {
+			isa = PBXGroup;
+			children = (
+				F50BFE94209C8990002B299A /* views */,
+				F50BFE90209C87D0002B299A /* GameViewController.swift */,
+				F50BFE92209C87DB002B299A /* GameViewController.storyboard */,
+			);
+			path = game;
+			sourceTree = "<group>";
+		};
+		F50BFE84209C863B002B299A /* main */ = {
+			isa = PBXGroup;
+			children = (
+				F50BFE85209C8667002B299A /* MainNavigationController.swift */,
+				F50BFE87209C8675002B299A /* MainNavigationController.storyboard */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		F50BFE89209C869B002B299A /* common */ = {
+			isa = PBXGroup;
+			children = (
+				F50BFE8A209C86C2002B299A /* StoryboardList.swift */,
+				F50BFE97209C8AA0002B299A /* Constants.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		F50BFE94209C8990002B299A /* views */ = {
+			isa = PBXGroup;
+			children = (
+				F50BFE95209C89C5002B299A /* MusicPlateView.swift */,
+				F50BFEA120A071FC002B299A /* AlbumImageView.swift */,
+				F50BFEA620A09693002B299A /* AnswerView.swift */,
+				F50BFEA820A18EB6002B299A /* AnswersView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		F50BFE99209C8ADD002B299A /* developer */ = {
+			isa = PBXGroup;
+			children = (
+				F50BFE9A209C8AE8002B299A /* extensions */,
+			);
+			path = developer;
+			sourceTree = "<group>";
+		};
+		F50BFE9A209C8AE8002B299A /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F50BFE9B209C8AFF002B299A /* UIColorExt.swift */,
+				F50BFE9D209C8B18002B299A /* CellExt.swift */,
+				F5118E9D20A1C9B600C2D023 /* CoreDataExt.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		F50BFEA320A08033002B299A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F5118E8720A1C49200C2D023 /* data models */,
+				F50BFEA420A0804E002B299A /* GTMGameModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F5118E8720A1C49200C2D023 /* data models */ = {
+			isa = PBXGroup;
+			children = (
+				F5118E8820A1C4CB00C2D023 /* GTMCameLevel.swift */,
+			);
+			path = "data models";
+			sourceTree = "<group>";
+		};
+		F5118E8A20A1C7F200C2D023 /* database */ = {
+			isa = PBXGroup;
+			children = (
+				F5118E8B20A1C83F00C2D023 /* GTMStaticDataStore.swift */,
+				F5118E9F20A1CA7E00C2D023 /* GTMCoreDataManager.swift */,
+			);
+			path = database;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F50BFE68209C85E4002B299A /* guess the melody */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F50BFE7E209C85E8002B299A /* Build configuration list for PBXNativeTarget "guess the melody" */;
+			buildPhases = (
+				8048D92A781ECE5E5D988838 /* [CP] Check Pods Manifest.lock */,
+				F50BFE65209C85E4002B299A /* Sources */,
+				F50BFE66209C85E4002B299A /* Frameworks */,
+				F50BFE67209C85E4002B299A /* Resources */,
+				851ADFA4073A1E9635CEA572 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "guess the melody";
+			productName = "guess the melody";
+			productReference = F50BFE69209C85E4002B299A /* guess the melody.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F50BFE61209C85E4002B299A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = VZ;
+				TargetAttributes = {
+					F50BFE68209C85E4002B299A = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = F50BFE64209C85E4002B299A /* Build configuration list for PBXProject "guess the melody" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F50BFE60209C85E4002B299A;
+			productRefGroup = F50BFE6A209C85E4002B299A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F50BFE68209C85E4002B299A /* guess the melody */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F50BFE67209C85E4002B299A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F50BFE8F209C8763002B299A /* MenuViewController.storyboard in Resources */,
+				F5118E8620A1C48100C2D023 /* questions.json in Resources */,
+				F50BFE88209C8675002B299A /* MainNavigationController.storyboard in Resources */,
+				F50BFE93209C87DB002B299A /* GameViewController.storyboard in Resources */,
+				F50BFE7A209C85E8002B299A /* LaunchScreen.storyboard in Resources */,
+				F594087D20A1C19E00AAAAD0 /* levels.json in Resources */,
+				F50BFE77209C85E8002B299A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8048D92A781ECE5E5D988838 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-guess the melody-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		851ADFA4073A1E9635CEA572 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F50BFE65209C85E4002B299A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5118EA920A1D31D00C2D023 /* GTMQuestionCD+CoreDataClass.swift in Sources */,
+				F5118EAA20A1D31D00C2D023 /* GTMLevelStatCD+CoreDataClass.swift in Sources */,
+				F5118EAB20A1D31D00C2D023 /* GTMLevelCD+CoreDataProperties.swift in Sources */,
+				F5118EAC20A1D31D00C2D023 /* GTMLevelCD+CoreDataClass.swift in Sources */,
+				F5118EAD20A1D31D00C2D023 /* GTMAnswerCD+CoreDataProperties.swift in Sources */,
+				F5118EAE20A1D31D00C2D023 /* GTMAnswerCD+CoreDataClass.swift in Sources */,
+				F5118EAF20A1D31D00C2D023 /* GTMQuestionCD+CoreDataProperties.swift in Sources */,
+				F5118EB020A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift in Sources */,
+				F50BFE8B209C86C2002B299A /* StoryboardList.swift in Sources */,
+				F50BFEA220A071FC002B299A /* AlbumImageView.swift in Sources */,
+				F50BFEA720A09694002B299A /* AnswerView.swift in Sources */,
+				F50BFE96209C89C5002B299A /* MusicPlateView.swift in Sources */,
+				F50BFE8D209C875A002B299A /* MenuViewController.swift in Sources */,
+				F50BFE9E209C8B18002B299A /* CellExt.swift in Sources */,
+				F50BFEA920A18EB6002B299A /* AnswersView.swift in Sources */,
+				F50BFEA520A0804E002B299A /* GTMGameModel.swift in Sources */,
+				F50BFE86209C8667002B299A /* MainNavigationController.swift in Sources */,
+				F5118EA020A1CA7E00C2D023 /* GTMCoreDataManager.swift in Sources */,
+				F5118E8920A1C4CB00C2D023 /* GTMCameLevel.swift in Sources */,
+				F5118E9E20A1C9B600C2D023 /* CoreDataExt.swift in Sources */,
+				F5118E8C20A1C83F00C2D023 /* GTMStaticDataStore.swift in Sources */,
+				F50BFE9C209C8AFF002B299A /* UIColorExt.swift in Sources */,
+				F50BFE6D209C85E4002B299A /* AppDelegate.swift in Sources */,
+				F50BFE91209C87D0002B299A /* GameViewController.swift in Sources */,
+				F50BFE75209C85E4002B299A /* guess_the_melody.xcdatamodeld in Sources */,
+				F50BFE98209C8AA0002B299A /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F50BFE78209C85E8002B299A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F50BFE79209C85E8002B299A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F50BFE7C209C85E8002B299A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F50BFE7D209C85E8002B299A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F50BFE7F209C85E8002B299A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1930C1C2485FECD5B5333751 /* Pods-guess the melody.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J57LR5C228;
+				INFOPLIST_FILE = "guess the melody/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "md.guess-the-melody";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F50BFE80209C85E8002B299A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0155088689067CA543C698E /* Pods-guess the melody.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J57LR5C228;
+				INFOPLIST_FILE = "guess the melody/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "md.guess-the-melody";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F50BFE64209C85E4002B299A /* Build configuration list for PBXProject "guess the melody" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F50BFE7C209C85E8002B299A /* Debug */,
+				F50BFE7D209C85E8002B299A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F50BFE7E209C85E8002B299A /* Build configuration list for PBXNativeTarget "guess the melody" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F50BFE7F209C85E8002B299A /* Debug */,
+				F50BFE80209C85E8002B299A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F50BFE73209C85E4002B299A /* guess_the_melody.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F50BFE74209C85E4002B299A /* guess_the_melody.xcdatamodel */,
+			);
+			currentVersion = F50BFE74209C85E4002B299A /* guess_the_melody.xcdatamodel */;
+			path = guess_the_melody.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F50BFE61209C85E4002B299A /* Project object */;
+}

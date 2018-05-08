@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GTMAnswerCD" representedClassName=".GTMAnswerCD" syncable="YES">
+        <attribute name="albumImageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="songName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="songUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GTMQuestionCD" inverseName="rightAnswer" inverseEntity="GTMQuestionCD" syncable="YES"/>
+        <relationship name="question_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GTMQuestionCD" inverseName="wrongAnswers" inverseEntity="GTMQuestionCD" syncable="YES"/>
+    </entity>
+    <entity name="GTMLevelCD" representedClassName=".GTMLevelCD" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isOpen" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isPassed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="life" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="numberOfAnswers" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="numberOfQuestions" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="swaps" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeToAnswer" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="levelStat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GTMLevelStatCD" inverseName="level" inverseEntity="GTMLevelStatCD" syncable="YES"/>
+    </entity>
+    <entity name="GTMLevelStatCD" representedClassName=".GTMLevelStatCD" syncable="YES">
+        <attribute name="numberOfError" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="numberOfSwaps" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stars" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="level" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GTMLevelCD" inverseName="levelStat" inverseEntity="GTMLevelCD" syncable="YES"/>
+    </entity>
+    <entity name="GTMQuestionCD" representedClassName=".GTMQuestionCD" syncable="YES">
+        <attribute name="isPassed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="rightAnswer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GTMAnswerCD" inverseName="question" inverseEntity="GTMAnswerCD" syncable="YES"/>
+        <relationship name="wrongAnswers" optional="YES" toMany="YES" minCount="3" maxCount="3" deletionRule="Nullify" destinationEntity="GTMAnswerCD" inverseName="question_" inverseEntity="GTMAnswerCD" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="GTMAnswerCD" positionX="-13115" positionY="-7839" width="128" height="133"/>
+        <element name="GTMLevelCD" positionX="-13599" positionY="-7812" width="128" height="178"/>
+        <element name="GTMLevelStatCD" positionX="-13376" positionY="-7687" width="128" height="118"/>
+        <element name="GTMQuestionCD" positionX="-13365" positionY="-7839" width="128" height="103"/>
+    </elements>
+</model>

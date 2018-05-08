@@ -1,0 +1,199 @@
+{
+    "levels" : [{
+                "id" : 1,
+                "life" : 3,
+                "swaps" : 3,
+                "timeToAnswer" : 20,
+                "numberOfAnswers" : 12
+                },
+                {
+                "id" : 2,
+                "life" : 5,
+                "swaps" : 2,
+                "timeToAnswer" : 10,
+                "numberOfAnswers" : 20
+                },
+                {
+                "id" : 3,
+                "life" : 3,
+                "swaps" : 4,
+                "timeToAnswer" : 8,
+                "numberOfAnswers" : 25
+                },
+                {
+                "id" : 4,
+                "life" : 3,
+                "swaps" : 3,
+                "timeToAnswer" : 10,
+                "numberOfAnswers" : 14
+                },
+                {
+                "id" : 5,
+                "life" : 3,
+                "swaps" : 2,
+                "timeToAnswer" : 12,
+                "numberOfAnswers" : 12
+                },
+                {
+                "id" : 6,
+                "life" : 3,
+                "swaps" : 0,
+                "timeToAnswer" : 15,
+                "numberOfAnswers" : 10
+                },
+                {
+                "id" : 7,
+                "life" : 1,
+                "swaps" : 1,
+                "timeToAnswer" : 10,
+                "numberOfAnswers" : 10
+                },
+                {
+                "id" : 8,
+                "life" : 3,
+                "swaps" : 0,
+                "timeToAnswer" : 12,
+                "numberOfAnswers" : 12
+                },
+                {
+                "id" : 9,
+                "life" : 3,
+                "swaps" : 3,
+                "timeToAnswer" : 10,
+                "numberOfAnswers" : 16
+                },
+                {
+                "id" : 10,
+                "life" : 5,
+                "swaps" : 5,
+                "timeToAnswer" : 8,
+                "numberOfAnswers" : 30
+                },
+                {
+                "id" : 11,
+                "life" : 2,
+                "swaps" : 2,
+                "timeToAnswer" : 10,
+                "numberOfAnswers" : 20
+                },
+                {
+                "id" : 12,
+                "life" : 3,
+                "swaps" : 3,
+                "timeToAnswer" : 15,
+                "numberOfAnswers" : 14
+                },
+                {
+                "id" : 13,
+                "life" : 2,
+                "swaps" : 1,
+                "timeToAnswer" : 10,
+                "numberOfAnswers" : 12
+                },
+                {
+                "id" : 14,
+                "life" : 2,
+                "swaps" : 2,
+                "timeToAnswer" : 8,
+                "numberOfAnswers" : 16
+                },
+                {
+                "id" : 15,
+                "life" : 2,
+                "swaps" : 6,
+                "timeToAnswer" : 6,
+                "numberOfAnswers" : 12
+                },
+                {
+                "id" : 16,
+                "life" : 2,
+                "swaps" : 4,
+                "timeToAnswer" : 10,
+                "numberOfAnswers" : 18
+                },
+                {
+                "id" : 17,
+                "life" : 4,
+                "swaps" : 4,
+                "timeToAnswer" : 12,
+                "numberOfAnswers" : 22
+                },
+                {
+                "id" : 18,
+                "life" : 3,
+                "swaps" : 3,
+                "timeToAnswer" : 12,
+                "numberOfAnswers" : 14
+                },
+                {
+                "id" : 19,
+                "life" : 1,
+                "swaps" : 0,
+                "timeToAnswer" : 12,
+                "numberOfAnswers" : 8
+                },
+                {
+                "id" : 20,
+                "life" : 2,
+                "swaps" : 0,
+                "timeToAnswer" : 10,
+                "numberOfAnswers" : 12
+                },
+                {
+                "id" : 21,
+                "life" : 3,
+                "swaps" : 3,
+                "timeToAnswer" : 8,
+                "numberOfAnswers" : 16
+                },
+                {
+                "id" : 22,
+                "life" : 2,
+                "swaps" : 2,
+                "timeToAnswer" : 12,
+                "numberOfAnswers" : 12
+                },
+                {
+                "id" : 23,
+                "life" : 3,
+                "swaps" : 3,
+                "timeToAnswer" : 8,
+                "numberOfAnswers" : 18
+                },
+                {
+                "id" : 24,
+                "life" : 3,
+                "swaps" : 0,
+                "timeToAnswer" : 6,
+                "numberOfAnswers" : 12
+                },
+                {
+                "id" : 25,
+                "life" : 1,
+                "swaps" : 6,
+                "timeToAnswer" : 8,
+                "numberOfAnswers" : 16
+                },
+                {
+                "id" : 26,
+                "life" : 1,
+                "swaps" : 4,
+                "timeToAnswer" : 12,
+                "numberOfAnswers" : 12
+                },
+                {
+                "id" : 27,
+                "life" : 3,
+                "swaps" : 0,
+                "timeToAnswer" : 8,
+                "numberOfAnswers" : 15
+                },
+                {
+                "id" : 28,
+                "life" : 3,
+                "swaps" : 1,
+                "timeToAnswer" : 10,
+                "numberOfAnswers" : 14
+                }]
+}
+

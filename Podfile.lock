@@ -1,0 +1,22 @@
+PODS:
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - SwiftyBeaver (1.5.2)
+
+DEPENDENCIES:
+  - SDWebImage
+  - SwiftyBeaver
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - SDWebImage
+    - SwiftyBeaver
+
+SPEC CHECKSUMS:
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SwiftyBeaver: 85daaaa2b3ae6e31b7b55c99430e8b91dac088af
+
+PODFILE CHECKSUM: ab7b2492924ff864ff4ad5983a1212c07b1c46d5
+
+COCOAPODS: 1.5.0
