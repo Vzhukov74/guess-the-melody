@@ -7,117 +7,109 @@
 //
 
 import Foundation
-
-class GTMAnswer {
-    var author: String = ""
-    var songName: String = ""
-    var albumImageUrl: String = ""
-    var songUrl: String = ""
-    
-    func setData(author : String, songName : String, albumImageUrl : String, songUrl : String) {
-        self.author = author
-        self.songName = songName
-        self.albumImageUrl = albumImageUrl
-        self.songUrl = songUrl
-    }
-    
-    func setData(data : [String : AnyObject]) {
-        self.author = data["author"] as? String ?? ""
-        self.songName = data["songName"] as? String ?? ""
-        self.albumImageUrl = data["albumImageUrl"] as? String ?? ""
-        self.songUrl = data["songUrl"] as? String ?? ""
-    }
-}
-
-class GTMQuestion {
-    var url: String = ""
-    var rightAnswer: GTMAnswer?
-    var wrongAnswers = [GTMAnswer]()
-    var isPassed: Bool = false
-    
-    func setData(rightAnswer : GTMAnswer, wrongAnswers : [GTMAnswer]) {
-        self.url = rightAnswer.songUrl
-        self.isPassed = false
-        self.rightAnswer = rightAnswer
-        self.wrongAnswers = wrongAnswers
-    }
-    
-    func setData(data : [String : AnyObject]) {
-        
-        self.isPassed = false
-        
-        if let rAnswer = data["rightAnswer"] as? [String : AnyObject] {
-            
-            let answer = GTMAnswer()
-            answer.setData(data: rAnswer)
-            
-            self.url = answer.songUrl
-            self.rightAnswer = answer
-        }
-        
-        if let wAnswers = data["wrongAnswers"] as? [[String : AnyObject]] {
-            for wAnswer in wAnswers {
-                
-                let answer = GTMAnswer()
-                answer.setData(data: wAnswer)
-                
-                wrongAnswers.append(answer)
-            }
-        }
-    }
-}
-
-
-
-class GTMCameLevelManager {
-    private var level: GTMCameLevel!
-    
-    private var currentQuestion: GTMQuestion!
-    
-    init(level: GTMCameLevel) {
-        self.level = level
-        currentQuestion = GTMQuestion()
-    }
-}
+import AVFoundation
+import AudioToolbox
+import SwiftyBeaver
 
 typealias GTMAnswerData = (songName: String, authorName: String)
 
-class GTMGameModel {
+class GTMGameModel: NSObject {
     
     private let questionStore = GTMQuestionManager()
     private var level: GTMCameLevelManager!
-    private var currentQuestion = GTMQuestion()
+    
+    private var nextQuestion: GTMQuestion?
+    private var currentQuestion: GTMQuestion!
     private var currentAnswers = [GTMAnswer]()
+    
+    private var preloadPlayer = AVPlayer()
+    private var songPlayer = AVPlayer()
+    private var observerContext = 0
+    
+    private var isLoading = false
+    
+    private var timer: GTMTimer?
+    
+    private var state: GTMGameState = .preparing {
+        didSet {
+            switch state {
+            case .preparing:
+                SwiftyBeaver.debug("state is preparing")
+                isLoading = true
+            case .listening:
+                SwiftyBeaver.debug("state is listening")
+                isLoading = false
+                timer = GTMTimer(time: level.getSongDuration())
+                timer?.updateTime = { (time) in
+                    SwiftyBeaver.info(time ?? "")
+                }
+                timer?.timeIsOver = { [weak self] in
+                    self?.state = .countdown
+                }
+                timer?.toggle()
+            case .countdown:
+                songPlayer.pause()
+                SwiftyBeaver.debug("state is countdown")
+                timer = GTMTimer(time: 3)
+                timer?.updateTime = { (time) in
+                    SwiftyBeaver.info(time ?? "")
+                }
+                timer?.timeIsOver = { [weak self] in
+                    self?.state = .preparing
+                }
+                timer?.toggle()
+            }
+        }
+    }
     
     var setUIForQuestion: (() -> Void)?
     
     init(level: GTMCameLevelManager) {
+        super.init()
         self.level = level
         
         setQuestion()
     }
     
     private func setQuestion() {
-        guard let question = questionStore.getQuestion() else { return }
-        currentQuestion = GTMQuestion()
+        state = .preparing
         
-        currentQuestion.isPassed = question.isPassed
-        currentQuestion.url = question.url!
+        //songPlayer.removeObserver(self, forKeyPath: "reasonForWaitingToPlay")
         
-        currentQuestion.rightAnswer = setAnswer(answer: question.rightAnswer!)
-        let wrongAnswers =  question.wrongAnswers!.allObjects as! [GTMAnswerCD]
-        currentQuestion.wrongAnswers = [setAnswer(answer: wrongAnswers[0]), setAnswer(answer: wrongAnswers[1]), setAnswer(answer: wrongAnswers[2])]
+        if nextQuestion == nil {
+            guard let question1 = questionStore.getQuestion() else { return }
+            guard let question2 = questionStore.getQuestion() else { return }
+            
+            self.currentQuestion = GTMQuestion()
+            self.currentQuestion.setData(data: question1)
+            self.nextQuestion = GTMQuestion()
+            self.nextQuestion?.setData(data: question2)
+            
+            songPlayer = setPlayerFor(question: currentQuestion)
+            preloadPlayer = setPlayerFor(question: nextQuestion!)
+        } else {
+            guard let question1 = questionStore.getQuestion() else { return }
+            self.currentQuestion = self.nextQuestion
+            self.nextQuestion = GTMQuestion()
+            self.nextQuestion?.setData(data: question1)
+            self.songPlayer = self.preloadPlayer
+            preloadPlayer = setPlayerFor(question: nextQuestion!)
+        }
         
         currentAnswers = [currentQuestion.rightAnswer!, currentQuestion.wrongAnswers[0], currentQuestion.wrongAnswers[1], currentQuestion.wrongAnswers[2]]
+        
+        currentAnswers = GTMHelper.randomizeArray(array: currentAnswers)
+        
+        songPlayer.addObserver(self, forKeyPath: "reasonForWaitingToPlay", options: .new, context: &observerContext)
+        songPlayer.play()
     }
     
-    private func setAnswer(answer: GTMAnswerCD) -> GTMAnswer {
-        let _answer = GTMAnswer()
-        _answer.author = answer.author!
-        _answer.songUrl = answer.songUrl!
-        _answer.songName = answer.songName!
-        _answer.albumImageUrl = answer.albumImageUrl!
-        return _answer
+    private func setPlayerFor(question: GTMQuestion) -> AVPlayer {
+        guard let url = question.rightAnswer?.songUrl, !url.isEmpty else { return AVPlayer() }
+        
+        let item = AVPlayerItem(url: NSURL(string: url)! as URL)
+        let player = AVPlayer(playerItem: item)
+        return player
     }
     
     func answerFor(index: Int) -> GTMAnswerData {
@@ -131,12 +123,43 @@ class GTMGameModel {
     }
     
     func userDidAnswer(index: Int) {
+        songPlayer.pause()
+        let answer = currentAnswers[index]
+        if answer.songUrl == currentQuestion.rightAnswer!.songUrl {
+            SwiftyBeaver.debug("it is correct answer")
+        } else {
+            SwiftyBeaver.debug("it is incorrect answer")
+        }
         setQuestion()
         self.setUIForQuestion?()
     }
     
     func userDidSwap() {
+        songPlayer.pause()
         setQuestion()
         self.setUIForQuestion?()
     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard context == &observerContext else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
+        }
+        if keyPath == "reasonForWaitingToPlay" {
+            if change![.newKey] is NSNull {
+                self.state = .listening
+            }
+            SwiftyBeaver.debug("reasonForWaitingToPlay is \(String(describing: change![.newKey]))")
+        }
+    }
+    
+    deinit {
+        songPlayer.removeObserver(self, forKeyPath: "reasonForWaitingToPlay")
+        
+        print("dainit - GTMGameModel")
+    }
+}
+
+extension GTMGameModel {
+    
 }

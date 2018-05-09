@@ -166,8 +166,16 @@ class AnswersView: UIView {
     @objc private func useDidSwap() {
         self.userDidSwap?()
         
-        UIView.animate(withDuration: 0.3) {
-            self.swapButton.transform = CGAffineTransform(rotationAngle: .pi)
+        self.spin(view: self.swapButton)
+    }
+    
+    private func spin(view: UIView) {
+        UIView.animate(withDuration: 0.2, animations: {
+            view.transform = CGAffineTransform(rotationAngle: .pi)
+        }) { (_) in
+            UIView.animate(withDuration: 0.2) {
+                view.transform = CGAffineTransform(rotationAngle: 0)
+            }
         }
     }
 }

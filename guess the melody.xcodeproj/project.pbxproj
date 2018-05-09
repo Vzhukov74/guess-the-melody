@@ -41,6 +41,12 @@
 		F5118EB020A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5118EA820A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift */; };
 		F5118EB220A1E84D00C2D023 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = F5118EB120A1E84D00C2D023 /* questions.json */; };
 		F594087D20A1C19E00AAAAD0 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = F594087C20A1C19E00AAAAD0 /* levels.json */; };
+		F5C0C73420A3204600C7BBAF /* GTMHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0C73320A3204600C7BBAF /* GTMHelper.swift */; };
+		F5C0C73720A3207E00C7BBAF /* GTMAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0C73620A3207E00C7BBAF /* GTMAnswer.swift */; };
+		F5C0C73920A3209800C7BBAF /* GTMQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0C73820A3209800C7BBAF /* GTMQuestion.swift */; };
+		F5C0C73B20A320B800C7BBAF /* GTMCameLevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0C73A20A320B800C7BBAF /* GTMCameLevelManager.swift */; };
+		F5C0C73D20A320F700C7BBAF /* GTMGameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0C73C20A320F700C7BBAF /* GTMGameState.swift */; };
+		F5C0C73F20A3260100C7BBAF /* GTMTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0C73E20A3260100C7BBAF /* GTMTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +88,12 @@
 		F5118EA820A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GTMLevelStatCD+CoreDataProperties.swift"; path = "guess the melody/database/database models/GTMLevelStatCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F5118EB120A1E84D00C2D023 /* questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
 		F594087C20A1C19E00AAAAD0 /* levels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
+		F5C0C73320A3204600C7BBAF /* GTMHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMHelper.swift; sourceTree = "<group>"; };
+		F5C0C73620A3207E00C7BBAF /* GTMAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMAnswer.swift; sourceTree = "<group>"; };
+		F5C0C73820A3209800C7BBAF /* GTMQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMQuestion.swift; sourceTree = "<group>"; };
+		F5C0C73A20A320B800C7BBAF /* GTMCameLevelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMCameLevelManager.swift; sourceTree = "<group>"; };
+		F5C0C73C20A320F700C7BBAF /* GTMGameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMGameState.swift; sourceTree = "<group>"; };
+		F5C0C73E20A3260100C7BBAF /* GTMTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				F50BFE9A209C8AE8002B299A /* extensions */,
+				F5C0C73320A3204600C7BBAF /* GTMHelper.swift */,
 			);
 			path = developer;
 			sourceTree = "<group>";
@@ -237,8 +250,12 @@
 		F50BFEA320A08033002B299A /* model */ = {
 			isa = PBXGroup;
 			children = (
+				F5C0C73520A3206200C7BBAF /* game models */,
 				F5118E8720A1C49200C2D023 /* data models */,
 				F50BFEA420A0804E002B299A /* GTMGameModel.swift */,
+				F5C0C73A20A320B800C7BBAF /* GTMCameLevelManager.swift */,
+				F5C0C73C20A320F700C7BBAF /* GTMGameState.swift */,
+				F5C0C73E20A3260100C7BBAF /* GTMTimer.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -258,6 +275,15 @@
 				F5118E9F20A1CA7E00C2D023 /* GTMCoreDataManager.swift */,
 			);
 			path = database;
+			sourceTree = "<group>";
+		};
+		F5C0C73520A3206200C7BBAF /* game models */ = {
+			isa = PBXGroup;
+			children = (
+				F5C0C73620A3207E00C7BBAF /* GTMAnswer.swift */,
+				F5C0C73820A3209800C7BBAF /* GTMQuestion.swift */,
+			);
+			path = "game models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +406,7 @@
 			files = (
 				F5118EA920A1D31D00C2D023 /* GTMQuestionCD+CoreDataClass.swift in Sources */,
 				F5118EAA20A1D31D00C2D023 /* GTMLevelStatCD+CoreDataClass.swift in Sources */,
+				F5C0C73920A3209800C7BBAF /* GTMQuestion.swift in Sources */,
 				F5118EAB20A1D31D00C2D023 /* GTMLevelCD+CoreDataProperties.swift in Sources */,
 				F5118EAC20A1D31D00C2D023 /* GTMLevelCD+CoreDataClass.swift in Sources */,
 				F5118EAD20A1D31D00C2D023 /* GTMAnswerCD+CoreDataProperties.swift in Sources */,
@@ -388,10 +415,14 @@
 				F5118EB020A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift in Sources */,
 				F50BFE8B209C86C2002B299A /* StoryboardList.swift in Sources */,
 				F50BFEA220A071FC002B299A /* AlbumImageView.swift in Sources */,
+				F5C0C73B20A320B800C7BBAF /* GTMCameLevelManager.swift in Sources */,
 				F50BFEA720A09694002B299A /* AnswerView.swift in Sources */,
 				F50BFE96209C89C5002B299A /* MusicPlateView.swift in Sources */,
+				F5C0C73D20A320F700C7BBAF /* GTMGameState.swift in Sources */,
 				F50BFE8D209C875A002B299A /* MenuViewController.swift in Sources */,
+				F5C0C73420A3204600C7BBAF /* GTMHelper.swift in Sources */,
 				F50BFE9E209C8B18002B299A /* CellExt.swift in Sources */,
+				F5C0C73F20A3260100C7BBAF /* GTMTimer.swift in Sources */,
 				F50BFEA920A18EB6002B299A /* AnswersView.swift in Sources */,
 				F50BFEA520A0804E002B299A /* GTMGameModel.swift in Sources */,
 				F50BFE86209C8667002B299A /* MainNavigationController.swift in Sources */,
@@ -399,6 +430,7 @@
 				F5118E8920A1C4CB00C2D023 /* GTMCameLevel.swift in Sources */,
 				F5118E9E20A1C9B600C2D023 /* CoreDataExt.swift in Sources */,
 				F5118E8C20A1C83F00C2D023 /* GTMStaticDataStore.swift in Sources */,
+				F5C0C73720A3207E00C7BBAF /* GTMAnswer.swift in Sources */,
 				F50BFE9C209C8AFF002B299A /* UIColorExt.swift in Sources */,
 				F50BFE6D209C85E4002B299A /* AppDelegate.swift in Sources */,
 				F50BFE91209C87D0002B299A /* GameViewController.swift in Sources */,
