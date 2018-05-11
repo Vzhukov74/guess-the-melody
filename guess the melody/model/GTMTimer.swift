@@ -40,7 +40,7 @@ class GTMTimer {
     private var _totalElapsed = CFTimeInterval(0)//CFTimeInterval?
     private var _state: State = .suspended
     
-    var updateTime: ((_ time: String?) -> Void)?
+    var updateTime: ((_ time: String) -> Void)?
     var timeIsOver: (() -> Void)?
     
     var isTimerActive: Bool {

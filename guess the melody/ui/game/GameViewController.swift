@@ -27,6 +27,20 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var answersView: AnswersView!
     
+    @IBOutlet weak var closeButton: UIButton! {
+        didSet {
+            closeButton.addTarget(self, action: #selector(self.closeButtonAction), for: .touchUpInside)
+        }
+    }
+    
+    @IBOutlet weak var playAndPauseButton: UIButton! {
+        didSet {
+            playAndPauseButton.addTarget(self, action: #selector(self.playAndPauseButtonAction), for: .touchUpInside)
+        }
+    }
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    
     private var isAlbumImageActive = false
     
     @IBAction func flipAction() {
@@ -40,7 +54,13 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        model.updateTime = { [weak self] (time) in
+            DispatchQueue.main.async {
+                self?.timeLabel.text = time
+            }
+        }
+        
         answersView.userDidAnswer = { [weak self] (index) in
             self?.useDidAnswer(index: index)
         }
@@ -67,6 +87,14 @@ class GameViewController: UIViewController {
     
     @objc private func useDidSwap() {
         model.userDidSwap()
+    }
+    
+    @objc private func closeButtonAction() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func playAndPauseButtonAction() {
+        
     }
     
     private func setQuestion() {

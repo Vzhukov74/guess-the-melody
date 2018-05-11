@@ -41,7 +41,7 @@ class GTMGameModel: NSObject {
                 isLoading = false
                 timer = GTMTimer(time: level.getSongDuration())
                 timer?.updateTime = { (time) in
-                    SwiftyBeaver.info(time ?? "")
+                    self.updateTime?(time)
                 }
                 timer?.timeIsOver = { [weak self] in
                     self?.state = .countdown
@@ -52,7 +52,7 @@ class GTMGameModel: NSObject {
                 SwiftyBeaver.debug("state is countdown")
                 timer = GTMTimer(time: 3)
                 timer?.updateTime = { (time) in
-                    SwiftyBeaver.info(time ?? "")
+                    self.updateTime?(time)
                 }
                 timer?.timeIsOver = { [weak self] in
                     self?.state = .preparing
@@ -63,6 +63,7 @@ class GTMGameModel: NSObject {
     }
     
     var setUIForQuestion: (() -> Void)?
+    var updateTime: ((_ time: String) -> Void)?
     
     init(level: GTMCameLevelManager) {
         super.init()
