@@ -21,6 +21,8 @@ class AnswersView: UIView {
     private var answer2ViewCenterConstrain: NSLayoutConstraint!
     private var answer3ViewCenterConstrain: NSLayoutConstraint!
     
+    private var swapIsLock = false
+    
     var userDidAnswer: ((_ index: Int) -> Void)?
     var userDidSwap: (() -> Void)?
     
@@ -106,6 +108,12 @@ class AnswersView: UIView {
         self.animateWith(data: data)
     }
     
+    func configureSwapButton(swap: Int) {
+        swapIsLock = swap == 0
+        
+        self.swapButton.setTitle("Swaps: \(String(swap))/\(String(swap))" as String, for: .normal)
+    }
+    
     private func animateWith(data: [GTMAnswerData]) {
         UIView.animate(withDuration: 0.5, delay: 0, options: [.transitionFlipFromTop, .curveEaseInOut], animations: {
             
@@ -164,9 +172,12 @@ class AnswersView: UIView {
     }
     
     @objc private func useDidSwap() {
-        self.userDidSwap?()
-        
-        self.spin(view: self.swapButton)
+        if swapIsLock {
+            self.shake(view: self.swapButton)
+        } else {
+            self.userDidSwap?()
+            self.spin(view: self.swapButton)
+        }
     }
     
     private func spin(view: UIView) {
@@ -177,5 +188,9 @@ class AnswersView: UIView {
                 view.transform = CGAffineTransform(rotationAngle: 0)
             }
         }
+    }
+    
+    private func shake(view: UIView) {
+        
     }
 }

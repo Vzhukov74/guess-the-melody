@@ -16,7 +16,7 @@ typealias GTMAnswerData = (songName: String, authorName: String)
 class GTMGameModel: NSObject {
     
     private let questionStore = GTMQuestionManager()
-    private var level: GTMCameLevelManager!
+    private var level: GTMGameLevelManager!
     
     private var nextQuestion: GTMQuestion?
     private var currentQuestion: GTMQuestion!
@@ -30,14 +30,15 @@ class GTMGameModel: NSObject {
     
     private var timer: GTMTimer?
     
-    private var state: GTMGameState = .preparing {
+    private var state: GTMGameState! {
         didSet {
             switch state {
+            case .initing: return
             case .preparing:
-                SwiftyBeaver.debug("state is preparing")
+                setQuestion()
                 isLoading = true
+                self.updateUI?(level.getSwaps(), level.getLife(), level.getNumberOfAnswers())
             case .listening:
-                SwiftyBeaver.debug("state is listening")
                 isLoading = false
                 timer = GTMTimer(time: level.getSongDuration())
                 timer?.updateTime = { (time) in
@@ -58,25 +59,33 @@ class GTMGameModel: NSObject {
                     self?.state = .preparing
                 }
                 timer?.toggle()
+            case .stop: return
+            case .none:
+                return
+            case .some(_):
+                return
             }
         }
     }
     
-    var setUIForQuestion: (() -> Void)?
+    var updateUI: ((_ swaps: Int, _ life: Int, _ rightAnswers: Int) -> Void)?
     var updateTime: ((_ time: String) -> Void)?
     
-    init(level: GTMCameLevelManager) {
+    init(level: GTMGameLevelManager) {
         super.init()
         self.level = level
-        
-        setQuestion()
+        self.state = .initing
+    }
+    
+    func startGame() {
+        self.state = .preparing
+    }
+    
+    func stopGame() {
+        self.state = .stop
     }
     
     private func setQuestion() {
-        state = .preparing
-        
-        //songPlayer.removeObserver(self, forKeyPath: "reasonForWaitingToPlay")
-        
         if nextQuestion == nil {
             guard let question1 = questionStore.getQuestion() else { return }
             guard let question2 = questionStore.getQuestion() else { return }
@@ -128,17 +137,18 @@ class GTMGameModel: NSObject {
         let answer = currentAnswers[index]
         if answer.songUrl == currentQuestion.rightAnswer!.songUrl {
             SwiftyBeaver.debug("it is correct answer")
+            level.userDidRightAnswer()
         } else {
             SwiftyBeaver.debug("it is incorrect answer")
+            level.userDidRightAnswer()
         }
-        setQuestion()
-        self.setUIForQuestion?()
+        self.state = .preparing
     }
     
     func userDidSwap() {
         songPlayer.pause()
-        setQuestion()
-        self.setUIForQuestion?()
+        level.userDidSwap()
+        self.state = .preparing
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

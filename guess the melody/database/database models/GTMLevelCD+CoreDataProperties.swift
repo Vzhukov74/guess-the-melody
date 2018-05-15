@@ -26,4 +26,14 @@ extension GTMLevelCD: EntityCreating {
     @NSManaged public var timeToAnswer: Int64
     @NSManaged public var levelStat: GTMLevelStatCD?
 
+    func map(from: GTMCameLevel) {
+        id = Int64(from.id)
+        isOpen = from.isOpen
+        isPassed = from.isPassed
+        life = Int64(from.life)
+        numberOfAnswers = Int64(from.numberOfAnswers)
+        numberOfQuestions = Int64(from.numberOfQuestions)
+        swaps = Int64(from.swaps)
+        timeToAnswer = Int64(from.timeToAnswer)
+    }
 }

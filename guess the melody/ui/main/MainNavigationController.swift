@@ -14,6 +14,7 @@ class MainNavigationController: UINavigationController {
         super.viewDidLoad()
 
         if let vc = MenuViewController.storyboardInstance {
+            vc.model = GTMMenuModel()
             self.viewControllers = [vc]
         }
     }

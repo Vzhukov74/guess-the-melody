@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import SwiftyBeaver
 
 class GameViewController: UIViewController {
 
@@ -50,8 +51,6 @@ class GameViewController: UIViewController {
     
     var model: GTMGameModel!
     
-    var qManager = GTMQuestionManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,15 +68,31 @@ class GameViewController: UIViewController {
             self?.useDidSwap()
         }
         
-        model.setUIForQuestion = { [weak self] in
+        model.updateUI = { [weak self] (swap, life, rightAnswers) in
+            self?.answersView.configureSwapButton(swap: swap)
+            self?.setLife(life: life)
+            self?.setRightAnswers(rightAnswers: rightAnswers)
+            
             self?.setQuestion()
         }
+    }
+    
+    private func setLife(life: Int) {
+        SwiftyBeaver.info(life)
+    }
+    
+    private func setRightAnswers(rightAnswers: Int) {
+        SwiftyBeaver.info(rightAnswers)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startSpin()
-        self.setQuestion()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        model.startGame()
     }
     
     @objc private func useDidAnswer(index: Int) {

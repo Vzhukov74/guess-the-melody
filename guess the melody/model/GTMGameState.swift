@@ -9,7 +9,9 @@
 import Foundation
 
 enum GTMGameState {
+    case initing
     case preparing
     case listening
     case countdown
+    case stop
 }
