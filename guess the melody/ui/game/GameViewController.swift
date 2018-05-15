@@ -42,6 +42,12 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var activityView: NVActivityIndicatorView! {
+        didSet {
+            activityView.type = .audioEqualizer
+        }
+    }
+    
     private var isAlbumImageActive = false
     
     @IBAction func flipAction() {
@@ -50,6 +56,8 @@ class GameViewController: UIViewController {
     }
     
     var model: GTMGameModel!
+    
+    let activity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30), type: .lineScale, color: UIColor.red, padding: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +83,10 @@ class GameViewController: UIViewController {
             
             self?.setQuestion()
         }
+        
+        self.view.addSubview(activity)
+        activity.startAnimating()
+        //activityView.startAnimating()
     }
     
     private func setLife(life: Int) {

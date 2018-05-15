@@ -79,9 +79,28 @@
                                 </constraints>
                                 <state key="normal" title="Play"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKS-sk-wJt" customClass="NVActivityIndicatorView">
+                                <rect key="frame" x="172" y="24" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="6lO-uE-Nbm"/>
+                                    <constraint firstAttribute="height" constant="30" id="gEZ-Y9-Bh8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.92156862750000001" green="0.23921568630000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="load"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.73725490199999999" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="DKS-sk-wJt" firstAttribute="top" secondItem="KCz-D6-VMJ" secondAttribute="top" constant="4" id="2Ls-Qp-bMz"/>
+                            <constraint firstItem="DKS-sk-wJt" firstAttribute="centerX" secondItem="I2r-sN-nVH" secondAttribute="centerX" id="3hy-xK-Fiv"/>
                             <constraint firstItem="KCz-D6-VMJ" firstAttribute="bottom" secondItem="xJG-5M-Es4" secondAttribute="bottom" constant="20" id="7cw-fe-dcp"/>
                             <constraint firstItem="HUH-St-VkY" firstAttribute="centerX" secondItem="I2r-sN-nVH" secondAttribute="centerX" id="Ewo-QH-Xhb"/>
                             <constraint firstItem="KCz-D6-VMJ" firstAttribute="trailing" secondItem="xJG-5M-Es4" secondAttribute="trailing" id="NQY-Tg-qR3"/>
@@ -97,6 +116,7 @@
                         <viewLayoutGuide key="safeArea" id="KCz-D6-VMJ"/>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="DKS-sk-wJt" id="1uW-BW-f2Q"/>
                         <outlet property="albumImageView" destination="9bk-vP-e3z" id="G0X-Rs-0Sv"/>
                         <outlet property="answersView" destination="xJG-5M-Es4" id="mhW-PZ-Bc5"/>
                         <outlet property="closeButton" destination="s4l-x3-6vp" id="i28-p2-MSb"/>

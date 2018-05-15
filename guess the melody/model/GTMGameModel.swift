@@ -14,21 +14,14 @@ import SwiftyBeaver
 typealias GTMAnswerData = (songName: String, authorName: String)
 
 class GTMGameModel: NSObject {
-    
     private let questionStore = GTMQuestionManager()
     private var level: GTMGameLevelManager!
     
-    private var nextQuestion: GTMQuestion?
     private var currentQuestion: GTMQuestion!
     private var currentAnswers = [GTMAnswer]()
     
-    private var preloadPlayer = AVPlayer()
-    private var songPlayer = AVPlayer()
-    private var observerContext = 0
-    
-    private var isLoading = false
-    
     private var timer: GTMTimer?
+    private let player = GTMPlayer()
     
     private var state: GTMGameState! {
         didSet {
@@ -36,10 +29,8 @@ class GTMGameModel: NSObject {
             case .initing: return
             case .preparing:
                 setQuestion()
-                isLoading = true
                 self.updateUI?(level.getSwaps(), level.getLife(), level.getNumberOfAnswers())
             case .listening:
-                isLoading = false
                 timer = GTMTimer(time: level.getSongDuration())
                 timer?.updateTime = { (time) in
                     self.updateTime?(time)
@@ -49,7 +40,7 @@ class GTMGameModel: NSObject {
                 }
                 timer?.toggle()
             case .countdown:
-                songPlayer.pause()
+                player.stop()
                 SwiftyBeaver.debug("state is countdown")
                 timer = GTMTimer(time: 3)
                 timer?.updateTime = { (time) in
@@ -86,32 +77,16 @@ class GTMGameModel: NSObject {
     }
     
     private func setQuestion() {
-        if nextQuestion == nil {
-            guard let question1 = questionStore.getQuestion() else { return }
-            guard let question2 = questionStore.getQuestion() else { return }
-            
-            self.currentQuestion = GTMQuestion()
-            self.currentQuestion.setData(data: question1)
-            self.nextQuestion = GTMQuestion()
-            self.nextQuestion?.setData(data: question2)
-            
-            songPlayer = setPlayerFor(question: currentQuestion)
-            preloadPlayer = setPlayerFor(question: nextQuestion!)
-        } else {
-            guard let question1 = questionStore.getQuestion() else { return }
-            self.currentQuestion = self.nextQuestion
-            self.nextQuestion = GTMQuestion()
-            self.nextQuestion?.setData(data: question1)
-            self.songPlayer = self.preloadPlayer
-            preloadPlayer = setPlayerFor(question: nextQuestion!)
-        }
+        guard let question = questionStore.getQuestion() else { return }
+        self.currentQuestion = GTMQuestion()
+        self.currentQuestion.setData(data: question)
         
         currentAnswers = [currentQuestion.rightAnswer!, currentQuestion.wrongAnswers[0], currentQuestion.wrongAnswers[1], currentQuestion.wrongAnswers[2]]
         
         currentAnswers = GTMHelper.randomizeArray(array: currentAnswers)
         
-        songPlayer.addObserver(self, forKeyPath: "reasonForWaitingToPlay", options: .new, context: &observerContext)
-        songPlayer.play()
+        player.delegate = self
+        player.setSongBy(urlStr: currentQuestion.rightAnswer?.songUrl ?? "")
     }
     
     private func setPlayerFor(question: GTMQuestion) -> AVPlayer {
@@ -133,7 +108,7 @@ class GTMGameModel: NSObject {
     }
     
     func userDidAnswer(index: Int) {
-        songPlayer.pause()
+        player.stop()
         let answer = currentAnswers[index]
         if answer.songUrl == currentQuestion.rightAnswer!.songUrl {
             SwiftyBeaver.debug("it is correct answer")
@@ -146,31 +121,24 @@ class GTMGameModel: NSObject {
     }
     
     func userDidSwap() {
-        songPlayer.pause()
+        player.stop()
         level.userDidSwap()
         self.state = .preparing
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard context == &observerContext else {
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-            return
-        }
-        if keyPath == "reasonForWaitingToPlay" {
-            if change![.newKey] is NSNull {
-                self.state = .listening
-            }
-            SwiftyBeaver.debug("reasonForWaitingToPlay is \(String(describing: change![.newKey]))")
-        }
-    }
-    
     deinit {
-        songPlayer.removeObserver(self, forKeyPath: "reasonForWaitingToPlay")
-        
         print("dainit - GTMGameModel")
     }
 }
 
-extension GTMGameModel {
-    
+extension GTMGameModel: GTMPlayerDelegate {
+    func startLoad() {
+        
+    }
+    func endLoad() {
+        self.player.start()
+    }
+    func error() {
+        SwiftyBeaver.error("player load with error")
+    }
 }
