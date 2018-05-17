@@ -28,7 +28,6 @@ class GTMGameModel: NSObject {
             switch state {
             case .initing: return
             case .preparing:
-                setQuestion()
                 self.updateUI?(level.getSwaps(), level.getLife(), level.getNumberOfAnswers())
             case .listening:
                 timer = GTMTimer(time: level.getSongDuration())
@@ -66,6 +65,10 @@ class GTMGameModel: NSObject {
         super.init()
         self.level = level
         self.state = .initing
+    }
+    
+    func setNextQuestion() {
+        setQuestion()
     }
     
     func startGame() {
@@ -107,17 +110,20 @@ class GTMGameModel: NSObject {
         return URL(string: "https://is3-ssl.mzstatic.com/image/thumb/Features/6f/c2/e0/dj.mlahzdak.jpg/1200x630bb.jpg")
     }
     
-    func userDidAnswer(index: Int) {
+    func userDidAnswer(index: Int) -> Bool {
         player.stop()
+        
         let answer = currentAnswers[index]
-        if answer.songUrl == currentQuestion.rightAnswer!.songUrl {
-            SwiftyBeaver.debug("it is correct answer")
+        let isCorrect = (answer.songUrl == currentQuestion.rightAnswer!.songUrl)
+        
+        if isCorrect {
             level.userDidRightAnswer()
         } else {
-            SwiftyBeaver.debug("it is incorrect answer")
             level.userDidRightAnswer()
         }
         self.state = .preparing
+        
+        return isCorrect
     }
     
     func userDidSwap() {

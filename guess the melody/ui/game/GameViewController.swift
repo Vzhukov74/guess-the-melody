@@ -55,12 +55,32 @@ class GameViewController: UIViewController {
         flip()
     }
     
+    private let rightAnswerView = RightAnswerView()
+    private var rightAnswerViewBottomConstrain = NSLayoutConstraint()
+    
     var model: GTMGameModel!
     
     let activity = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30), type: .lineScale, color: UIColor.red, padding: 1)
     
+    private func setupRightAnswerView() {
+        self.view.addSubview(rightAnswerView)
+        rightAnswerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        rightAnswerViewBottomConstrain = rightAnswerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 200)
+        
+        NSLayoutConstraint.activate([rightAnswerView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8), rightAnswerView.heightAnchor.constraint(equalToConstant: 200),rightAnswerViewBottomConstrain , rightAnswerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 1)])
+        
+        rightAnswerView.backgroundColor = UIColor.red
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupRightAnswerView()
+        rightAnswerView.nextAction = { [weak self] in
+            self?.model.setNextQuestion()
+            self?.hideRightAnswerView()
+        }
         
         model.updateTime = { [weak self] (time) in
             DispatchQueue.main.async {
@@ -83,6 +103,7 @@ class GameViewController: UIViewController {
             
             self?.setQuestion()
         }
+        model.setNextQuestion()
         
         self.view.addSubview(activity)
         activity.startAnimating()
@@ -105,23 +126,6 @@ class GameViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         model.startGame()
-    }
-    
-    @objc private func useDidAnswer(index: Int) {
-        flipAction()
-        model.userDidAnswer(index: index)
-    }
-    
-    @objc private func useDidSwap() {
-        model.userDidSwap()
-    }
-    
-    @objc private func closeButtonAction() {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func playAndPauseButtonAction() {
-        
     }
     
     private func setQuestion() {
@@ -153,6 +157,46 @@ class GameViewController: UIViewController {
 
     deinit {
         print("deinit - GameViewController")
+    }
+}
+
+@objc extension GameViewController {
+    private func useDidAnswer(index: Int) {
+        //flipAction()
+        let isCorrect = model.userDidAnswer(index: index)
+        if isCorrect {
+            showRightAnswerView()
+        } else {
+            
+        }
+    }
+    
+    private func useDidSwap() {
+        model.userDidSwap()
+    }
+    
+    private func closeButtonAction() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func playAndPauseButtonAction() {
+        
+    }
+}
+
+extension GameViewController {
+    private func showRightAnswerView() {
+        UIView.animate(withDuration: 0.3) {
+            self.rightAnswerViewBottomConstrain.constant = -4
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func hideRightAnswerView() {
+        UIView.animate(withDuration: 0.3) {
+            self.rightAnswerViewBottomConstrain.constant = 200
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
