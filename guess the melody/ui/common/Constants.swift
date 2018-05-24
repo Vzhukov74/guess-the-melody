@@ -17,4 +17,6 @@ class Colors {
     static let musicPlate5 = UIColor(hexStr: "BC78A2")
     static let musicPlate6 = UIColor(hexStr: "827798")
     static let musicPlate7 = UIColor(hexStr: "34405A")
+    
+    static let mainTextColor = UIColor(hexStr: "34405A")
 }

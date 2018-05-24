@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040CDB0120B6C6B00084FE72 /* WrongAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CDB0020B6C6B00084FE72 /* WrongAnswerView.swift */; };
+		040CDB0520B6D6DE0084FE72 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 040CDB0420B6D6DE0084FE72 /* SF-Pro-Display-Bold.otf */; };
+		040CDB0720B6D6ED0084FE72 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 040CDB0620B6D6ED0084FE72 /* SF-Pro-Display-Regular.otf */; };
+		040CDB0920B6D6F60084FE72 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 040CDB0820B6D6F60084FE72 /* SF-Pro-Display-Semibold.otf */; };
+		040CDB0A20B6D7110084FE72 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 040CDB0320B6D6D30084FE72 /* SF-Pro-Display-Light.otf */; };
+		040CDB0D20B6D7310084FE72 /* GTMFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CDB0C20B6D7310084FE72 /* GTMFonts.swift */; };
 		CF3585AC57C2668A8E4C74E5 /* Pods_guess_the_melody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */; };
 		F50BFE6D209C85E4002B299A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE6C209C85E4002B299A /* AppDelegate.swift */; };
 		F50BFE75209C85E4002B299A /* guess_the_melody.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE73209C85E4002B299A /* guess_the_melody.xcdatamodeld */; };
@@ -95,6 +101,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040CDB0020B6C6B00084FE72 /* WrongAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerView.swift; sourceTree = "<group>"; };
+		040CDB0320B6D6D30084FE72 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		040CDB0420B6D6DE0084FE72 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		040CDB0620B6D6ED0084FE72 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		040CDB0820B6D6F60084FE72 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		040CDB0C20B6D7310084FE72 /* GTMFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMFonts.swift; sourceTree = "<group>"; };
 		1930C1C2485FECD5B5333751 /* Pods-guess the melody.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guess the melody.debug.xcconfig"; path = "Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody.debug.xcconfig"; sourceTree = "<group>"; };
 		6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guess_the_melody.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0155088689067CA543C698E /* Pods-guess the melody.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guess the melody.release.xcconfig"; path = "Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody.release.xcconfig"; sourceTree = "<group>"; };
@@ -199,6 +211,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040CDB0220B6D6A60084FE72 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				040CDB0820B6D6F60084FE72 /* SF-Pro-Display-Semibold.otf */,
+				040CDB0620B6D6ED0084FE72 /* SF-Pro-Display-Regular.otf */,
+				040CDB0420B6D6DE0084FE72 /* SF-Pro-Display-Bold.otf */,
+				040CDB0320B6D6D30084FE72 /* SF-Pro-Display-Light.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		137850A83F818ABA05FE395D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +268,7 @@
 		F50BFE6B209C85E4002B299A /* guess the melody */ = {
 			isa = PBXGroup;
 			children = (
+				040CDB0220B6D6A60084FE72 /* fonts */,
 				F5118E8A20A1C7F200C2D023 /* database */,
 				F50BFEA320A08033002B299A /* model */,
 				F50BFE99209C8ADD002B299A /* developer */,
@@ -307,6 +331,7 @@
 			children = (
 				F50BFE8A209C86C2002B299A /* StoryboardList.swift */,
 				F50BFE97209C8AA0002B299A /* Constants.swift */,
+				040CDB0C20B6D7310084FE72 /* GTMFonts.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -319,6 +344,7 @@
 				F50BFEA620A09693002B299A /* AnswerView.swift */,
 				F50BFEA820A18EB6002B299A /* AnswersView.swift */,
 				F5309ACA20ADB24F00AA6553 /* RightAnswerView.swift */,
+				040CDB0020B6C6B00084FE72 /* WrongAnswerView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -541,13 +567,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040CDB0A20B6D7110084FE72 /* SF-Pro-Display-Light.otf in Resources */,
 				F50BFE8F209C8763002B299A /* MenuViewController.storyboard in Resources */,
 				F50BFE88209C8675002B299A /* MainNavigationController.storyboard in Resources */,
+				040CDB0520B6D6DE0084FE72 /* SF-Pro-Display-Bold.otf in Resources */,
 				F50BFE93209C87DB002B299A /* GameViewController.storyboard in Resources */,
 				F50BFE7A209C85E8002B299A /* LaunchScreen.storyboard in Resources */,
 				F594087D20A1C19E00AAAAD0 /* levels.json in Resources */,
 				F50BFE77209C85E8002B299A /* Assets.xcassets in Resources */,
 				F54A4D8D20A9AFC200BB480D /* LevelCell.xib in Resources */,
+				040CDB0720B6D6ED0084FE72 /* SF-Pro-Display-Regular.otf in Resources */,
+				040CDB0920B6D6F60084FE72 /* SF-Pro-Display-Semibold.otf in Resources */,
 				F5118EB220A1E84D00C2D023 /* questions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,6 +675,7 @@
 				F5187FE920AB140F0026C1C7 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
 				F5187FC120AB13DC0026C1C7 /* NVActivityIndicatorView.swift in Sources */,
 				F518800520AB140F0026C1C7 /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
+				040CDB0D20B6D7310084FE72 /* GTMFonts.swift in Sources */,
 				F5187FFE20AB140F0026C1C7 /* NVActivityIndicatorAnimationCircleStrokeSpin.swift in Sources */,
 				F50BFEA920A18EB6002B299A /* AnswersView.swift in Sources */,
 				F50BFEA520A0804E002B299A /* GTMGameModel.swift in Sources */,
@@ -670,6 +701,7 @@
 				F5187FEB20AB140F0026C1C7 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				F5187FFF20AB140F0026C1C7 /* NVActivityIndicatorAnimationPacman.swift in Sources */,
 				F50BFE6D209C85E4002B299A /* AppDelegate.swift in Sources */,
+				040CDB0120B6C6B00084FE72 /* WrongAnswerView.swift in Sources */,
 				F50BFE91209C87D0002B299A /* GameViewController.swift in Sources */,
 				F5187FFD20AB140F0026C1C7 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
 				F5187FF820AB140F0026C1C7 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,

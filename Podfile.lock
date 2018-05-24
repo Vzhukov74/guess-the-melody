@@ -9,7 +9,7 @@ DEPENDENCIES:
   - SwiftyBeaver
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - SDWebImage
     - SwiftyBeaver
 
@@ -19,4 +19,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ab7b2492924ff864ff4ad5983a1212c07b1c46d5
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.2

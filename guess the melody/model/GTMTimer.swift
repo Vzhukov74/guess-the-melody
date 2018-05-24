@@ -19,16 +19,11 @@ class GTMTimerFormatter {
     }
     
     class func timeAsStringFor(time: Double) -> String {
-        if time > (60 * 60) {
-            return GTMTimerFormatter.getWith(units: [.hour, .minute, .second]).string(from: time) ?? ""
-        } else {
-            return GTMTimerFormatter.getWith(units: [.minute, .second]).string(from: time) ?? ""
-        }
+        return GTMTimerFormatter.getWith(units: [.second]).string(from: time) ?? ""
     }
 }
 
 class GTMTimer {
-    
     private enum State {
         case suspended
         case resumed
@@ -37,7 +32,7 @@ class GTMTimer {
     private let queue = DispatchQueue(label: "md.vz.timer")
     private var _timer: DispatchSourceTimer?
     private var _start: CFTimeInterval?
-    private var _totalElapsed = CFTimeInterval(0)//CFTimeInterval?
+    private var _totalElapsed = CFTimeInterval(0)
     private var _state: State = .suspended
     
     var updateTime: ((_ time: String) -> Void)?
@@ -50,7 +45,7 @@ class GTMTimer {
     private let time: Double!
     
     init(time: Int) {
-        self.time = Double(time + 1)
+        self.time = Double(time)
         createTimer()
     }
     
@@ -86,9 +81,10 @@ class GTMTimer {
             let totalElapsed = self._totalElapsed //else { return }
             
             let elapsed = totalElapsed + CACurrentMediaTime() - start
+            let left = self.time - elapsed
             
-            if elapsed < self.time {
-                 self.updateTime?(GTMTimerFormatter.timeAsStringFor(time: elapsed))
+            if left > 0 {
+                 self.updateTime?(GTMTimerFormatter.timeAsStringFor(time: left))
             } else {
                 self.pauseTimer()
                 self.timeIsOver?()

@@ -33,12 +33,20 @@ class GTMGameLevelManager {
         return life
     }
     
+    func totalLives() -> Int {
+        return Int(level.life)
+    }
+    
+    func totalAnswers() -> Int {
+        return Int(level.numberOfAnswers)
+    }
+    
     func userDidSwap() {
         swaps -= 1
     }
     
     func getNumberOfAnswers() -> Int {
-        return Int(level.numberOfAnswers)
+        return wasRightAnswers
     }
     
     func userDidWrongAnswer() {

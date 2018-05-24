@@ -60,9 +60,13 @@ class GTMPlayer {
             do {
                 if let _data = data {
                     self?.player = try AVAudioPlayer(data: _data)
-                    self?.delegate?.endLoad()
+                    DispatchQueue.main.async {
+                        self?.delegate?.endLoad()
+                    }
                 } else {
-                    self?.delegate?.error()
+                    DispatchQueue.main.async {
+                        self?.delegate?.error()
+                    }
                 }
             } catch {
                 self?.delegate?.error()
@@ -76,5 +80,9 @@ class GTMPlayer {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = isVisible
         }
+    }
+    
+    deinit {
+        print("deinit - GTMPlayer")
     }
 }

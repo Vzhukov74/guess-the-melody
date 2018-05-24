@@ -61,6 +61,11 @@ class AnswerView: UIView {
     
     private func configureLabels() {
         authorName.textAlignment = .center
+        authorName.font = GTMFonts.sfProDisplayRegular_14
+        authorName.textColor = Colors.mainTextColor
+        
         songName.textAlignment = .center
+        songName.font = GTMFonts.sfProDisplayRegular_14
+        songName.textColor = Colors.mainTextColor
     }
 }

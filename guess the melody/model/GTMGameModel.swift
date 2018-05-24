@@ -28,28 +28,42 @@ class GTMGameModel: NSObject {
             switch state {
             case .initing: return
             case .preparing:
+                updateTime?("--")
                 self.updateUI?(level.getSwaps(), level.getLife(), level.getNumberOfAnswers())
             case .listening:
                 timer = GTMTimer(time: level.getSongDuration())
-                timer?.updateTime = { (time) in
-                    self.updateTime?(time)
+                updateTime?(GTMTimerFormatter.timeAsStringFor(time: Double(level.getSongDuration())))
+                timer?.updateTime = { [weak self] (time) in
+                    DispatchQueue.main.async {
+                        self?.updateTime?(time)
+                    }
                 }
                 timer?.timeIsOver = { [weak self] in
-                    self?.state = .countdown
+                    DispatchQueue.main.async {
+                        self?.state = .countdown
+                    }
                 }
                 timer?.toggle()
             case .countdown:
                 player.stop()
                 SwiftyBeaver.debug("state is countdown")
                 timer = GTMTimer(time: 3)
+                updateTime?(GTMTimerFormatter.timeAsStringFor(time: 3))
                 timer?.updateTime = { (time) in
-                    self.updateTime?(time)
+                    DispatchQueue.main.async {
+                        self.updateTime?(time)
+                    }
                 }
                 timer?.timeIsOver = { [weak self] in
-                    self?.state = .preparing
+                    DispatchQueue.main.async {
+                        self?.level.userDidWrongAnswer()
+                        self?.timeIsOver?()
+                    }
                 }
                 timer?.toggle()
-            case .stop: return
+            case .stop:
+                player.stop()
+                timer?.pause()
             case .none:
                 return
             case .some(_):
@@ -60,6 +74,8 @@ class GTMGameModel: NSObject {
     
     var updateUI: ((_ swaps: Int, _ life: Int, _ rightAnswers: Int) -> Void)?
     var updateTime: ((_ time: String) -> Void)?
+    var startStopLoading: ((_ isLoading: Bool) -> Void)?
+    var timeIsOver: (() -> Void)?
     
     init(level: GTMGameLevelManager) {
         super.init()
@@ -72,7 +88,7 @@ class GTMGameModel: NSObject {
     }
     
     func startGame() {
-        self.state = .preparing
+        //self.state = .preparing
     }
     
     func stopGame() {
@@ -90,6 +106,7 @@ class GTMGameModel: NSObject {
         
         player.delegate = self
         player.setSongBy(urlStr: currentQuestion.rightAnswer?.songUrl ?? "")
+        self.state = .preparing
     }
     
     private func setPlayerFor(question: GTMQuestion) -> AVPlayer {
@@ -119,7 +136,7 @@ class GTMGameModel: NSObject {
         if isCorrect {
             level.userDidRightAnswer()
         } else {
-            level.userDidRightAnswer()
+            level.userDidWrongAnswer()
         }
         self.state = .preparing
         
@@ -132,6 +149,14 @@ class GTMGameModel: NSObject {
         self.state = .preparing
     }
     
+    func totalLives() -> Int {
+        return level.totalLives()
+    }
+    
+    func totalAnswers() -> Int {
+        return level.totalAnswers()
+    }
+    
     deinit {
         print("dainit - GTMGameModel")
     }
@@ -139,9 +164,11 @@ class GTMGameModel: NSObject {
 
 extension GTMGameModel: GTMPlayerDelegate {
     func startLoad() {
-        
+        self.startStopLoading?(true)
     }
     func endLoad() {
+        self.state = .listening
+        self.startStopLoading?(false)
         self.player.start()
     }
     func error() {

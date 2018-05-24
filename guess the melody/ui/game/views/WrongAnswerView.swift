@@ -1,15 +1,15 @@
 //
-//  RightAnswerView.swift
+//  WrongAnswerView.swift
 //  guess the melody
 //
-//  Created by Vlad on 17.05.2018.
+//  Created by Maximal Mac on 24.05.2018.
 //  Copyright © 2018 VZ. All rights reserved.
 //
 
 import UIKit
 
-class RightAnswerView: UIView {
-
+class WrongAnswerView: UIView {
+    
     var nextAction: (() -> Void)?
     
     private let nextButton = UIButton()
@@ -31,7 +31,7 @@ class RightAnswerView: UIView {
         
         setConstrains()
         
-        titleLabel.text = "It is correct answer!"
+        titleLabel.text = "It is wrong answer!"
         titleLabel.textAlignment = .center
         nextButton.setTitle("next question", for: .normal)
         
@@ -50,7 +50,7 @@ class RightAnswerView: UIView {
     }
 }
 
-@objc extension RightAnswerView {
+@objc extension WrongAnswerView {
     func nextButtonAction() {
         nextAction?()
     }
