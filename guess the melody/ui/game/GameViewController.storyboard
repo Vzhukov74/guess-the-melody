@@ -179,7 +179,6 @@
                         <viewLayoutGuide key="safeArea" id="KCz-D6-VMJ"/>
                     </view>
                     <connections>
-                        <outlet property="albumImageView" destination="9bk-vP-e3z" id="G0X-Rs-0Sv"/>
                         <outlet property="answersLabel" destination="WG6-CX-TeD" id="KIP-K8-OAz"/>
                         <outlet property="answersView" destination="xJG-5M-Es4" id="mhW-PZ-Bc5"/>
                         <outlet property="closeButton" destination="s4l-x3-6vp" id="i28-p2-MSb"/>

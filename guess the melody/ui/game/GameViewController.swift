@@ -14,17 +14,10 @@ class GameViewController: UIViewController {
 
     @IBOutlet weak var musicPlateView: MusicPlateView! {
         didSet {
-            musicPlateView.layer.cornerRadius = musicPlateView.bounds.width / 2
             musicPlateView.clipsToBounds = true
         }
     }
-    
     @IBOutlet weak var musicPlateAlbumViewsContainer: UIView!
-    @IBOutlet weak var albumImageView: AlbumImageView! {
-        didSet {            
-            //albumImageView.makeCurcular(CGRect(x: 0, y: 0, width: 160, height: 160))
-        }
-    }
     
     @IBOutlet weak var answersView: AnswersView!
     
@@ -108,9 +101,28 @@ class GameViewController: UIViewController {
             self?.showWrongAnswerView()
         }
         
-        model.setNextQuestion()
+        model.gameOver = { [weak self] isUserWin in
+            if isUserWin {
+                self?.setNextLevel()
+            } else {
+                self?.playAgain()
+            }
+        }
+        
+        model.startGame()
         
         self.view.addSubview(activity)
+    }
+    
+    private func setNextLevel() {
+        model.setNextLevel()
+        model.startGame()
+    }
+    
+    private func playAgain() {
+        setNextLevel()
+        //model.playAgain()
+        //model.startGame()
     }
     
     private func setupRightAnswerView() {

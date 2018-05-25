@@ -8,7 +8,7 @@
 import Foundation
 
 class GTMGameLevelManager {
-    private var level: GTMLevelCD!
+    var level: GTMLevelCD!
     private var swaps = 0
     private var life = 0
     private var wasRightAnswers = 0
@@ -56,6 +56,12 @@ class GTMGameLevelManager {
         }
     }
     
+    func reset() {
+        self.life = Int(level.life)
+        self.swaps = Int(level.swaps)
+        self.wasRightAnswers = 0
+    }
+    
     func userDidRightAnswer() {
         wasRightAnswers += 1
         if Int(level.numberOfAnswers) == wasRightAnswers {
@@ -63,7 +69,11 @@ class GTMGameLevelManager {
         }
     }
     
-    private func calculateStatistics() {
+    func gameStatics() -> GTMLevelStat {
+        return calculateStatistics()
+    }
     
+    private func calculateStatistics() -> GTMLevelStat {
+        return GTMLevelStat()
     }
 }

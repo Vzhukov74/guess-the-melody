@@ -10,11 +10,12 @@ import Foundation
 import CoreData
 import SwiftyBeaver
 
-class GTMMenuModel {
+class GTMLevelsHelper {
+    static let shared = GTMLevelsHelper()
     
     var levels = [GTMLevelCD]()
     
-    init() {
+    private init() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GTMLevelCD")
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -25,6 +26,19 @@ class GTMMenuModel {
             SwiftyBeaver.debug("number of levels is \(levels.count)")
         } catch {
             SwiftyBeaver.error(error.localizedDescription)
+        }
+    }
+    
+    func getNextLevelFor(level: GTMLevelCD) -> GTMLevelCD? {
+        let index: Int = Int(level.id) - 1
+        return levels[index]
+    }
+}
+
+class GTMMenuModel {
+    var levels: [GTMLevelCD] {
+        get {
+            return GTMLevelsHelper.shared.levels
         }
     }
 }

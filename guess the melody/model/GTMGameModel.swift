@@ -76,11 +76,33 @@ class GTMGameModel: NSObject {
     var updateTime: ((_ time: String) -> Void)?
     var startStopLoading: ((_ isLoading: Bool) -> Void)?
     var timeIsOver: (() -> Void)?
+    var gameOver: ((_ isUserWin: Bool) -> Void)?
+    var itWasLastLevel: (() -> Void)?
     
     init(level: GTMGameLevelManager) {
         super.init()
         self.level = level
         self.state = .initing
+        
+        self.level.didEndGame = { [weak self] isUserWin in
+            self?.gameOver?(isUserWin)
+        }
+    }
+    
+    func setNextLevel() {
+        if let _level = GTMLevelsHelper.shared.getNextLevelFor(level: level.level) {
+            level = GTMGameLevelManager(level: _level)
+            self.updateUI?(level.getSwaps(), level.getLife(), level.getNumberOfAnswers())
+            self.updateTime?("--")
+        } else {
+            self.itWasLastLevel?()
+        }
+    }
+    
+    func playAgain() {
+        level.reset()
+        self.updateUI?(level.getSwaps(), level.getLife(), level.getNumberOfAnswers())
+        self.updateTime?("--")
     }
     
     func setNextQuestion() {
@@ -88,11 +110,15 @@ class GTMGameModel: NSObject {
     }
     
     func startGame() {
-        //self.state = .preparing
+        setQuestion()
     }
     
     func stopGame() {
         self.state = .stop
+    }
+    
+    func gameStatics() -> GTMLevelStat {
+        return level.gameStatics()
     }
     
     private func setQuestion() {

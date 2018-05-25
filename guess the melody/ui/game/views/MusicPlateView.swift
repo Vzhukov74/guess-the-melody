@@ -90,6 +90,14 @@ class MusicPlateView: UIView {
         color8.setFill()
         path8.stroke()
         path8.fill()
+        
+        let circle = UIBezierPath()
+        circle.addArc(withCenter: center, radius: rect.width / 2, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+        UIColor.clear.setFill()
+        circle.fill()
+        let circleLayer = CAShapeLayer()
+        circleLayer.path = circle.cgPath
+        self.layer.mask = circleLayer
     }
     
     func startSpin() {
