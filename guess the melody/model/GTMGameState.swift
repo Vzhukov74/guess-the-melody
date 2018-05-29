@@ -12,6 +12,7 @@ enum GTMGameState {
     case initing
     case preparing
     case listening
+    case prepareCountdown
     case countdown
     case stop
 }

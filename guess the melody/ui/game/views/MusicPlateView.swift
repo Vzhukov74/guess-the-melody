@@ -16,6 +16,7 @@ class MusicPlateView: UIView {
     
     private var isSpinnig = false
     private var spin: Spin = .zero
+    private var angle: Double = 0
     
     override func draw(_ rect: CGRect) {
         
@@ -112,15 +113,14 @@ class MusicPlateView: UIView {
     }
     
     private func spinWith(options: UIViewAnimationOptions) {
-        UIView.animate(withDuration: 1, delay: 0, options: options, animations: {
-            var angle = Double.pi
-            if self.spin == .zero {
-                self.spin = .pi
-            } else if self.spin == .pi {
-                self.spin = .zero
-                angle = 0
+        UIView.animate(withDuration: 0.2, delay: 0, options: options, animations: {
+            self.angle += .pi / 2
+            
+            if self.angle > 2 * .pi {
+                self.angle = 0
             }
-            self.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
+ 
+            self.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
         }) { (_) in
             if self.isSpinnig {
                 self.spinWith(options: .curveLinear)

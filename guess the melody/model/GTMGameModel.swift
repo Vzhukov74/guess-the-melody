@@ -23,14 +23,16 @@ class GTMGameModel: NSObject {
     private var timer: GTMTimer?
     private let player = GTMPlayer()
     
+    private var previousState: GTMGameState = .initing
     private var state: GTMGameState! {
         didSet {
             switch state {
             case .initing: return
             case .preparing:
+                self.timer?.pause()
+                startStopSpin?(false)
                 updateTime?("--")
                 self.updateUI?(level.getSwaps(), level.getLife(), level.getNumberOfAnswers())
-            case .listening:
                 timer = GTMTimer(time: level.getSongDuration())
                 updateTime?(GTMTimerFormatter.timeAsStringFor(time: Double(level.getSongDuration())))
                 timer?.updateTime = { [weak self] (time) in
@@ -40,13 +42,15 @@ class GTMGameModel: NSObject {
                 }
                 timer?.timeIsOver = { [weak self] in
                     DispatchQueue.main.async {
-                        self?.state = .countdown
+                        self?.state = .prepareCountdown
                     }
                 }
+            case .listening:
+                startStopSpin?(true)
+                player.start()
                 timer?.toggle()
-            case .countdown:
+            case .prepareCountdown:
                 player.stop()
-                SwiftyBeaver.debug("state is countdown")
                 timer = GTMTimer(time: 3)
                 updateTime?(GTMTimerFormatter.timeAsStringFor(time: 3))
                 timer?.updateTime = { (time) in
@@ -60,8 +64,12 @@ class GTMGameModel: NSObject {
                         self?.timeIsOver?()
                     }
                 }
+                setCountdownState()
+            case .countdown:
+                startStopSpin?(true)
                 timer?.toggle()
             case .stop:
+                startStopSpin?(false)
                 player.stop()
                 timer?.pause()
             case .none:
@@ -72,8 +80,12 @@ class GTMGameModel: NSObject {
         }
     }
     
+    var isGameOnPause: Bool {
+        return (state == .stop)
+    }
     var updateUI: ((_ swaps: Int, _ life: Int, _ rightAnswers: Int) -> Void)?
     var updateTime: ((_ time: String) -> Void)?
+    var startStopSpin: ((_ isSpinning: Bool) -> Void)?
     var startStopLoading: ((_ isLoading: Bool) -> Void)?
     var timeIsOver: (() -> Void)?
     var gameOver: ((_ isUserWin: Bool) -> Void)?
@@ -87,6 +99,8 @@ class GTMGameModel: NSObject {
         self.level.didEndGame = { [weak self] isUserWin in
             self?.gameOver?(isUserWin)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.stopGame), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
     func setNextLevel() {
@@ -113,8 +127,13 @@ class GTMGameModel: NSObject {
         setQuestion()
     }
     
-    func stopGame() {
-        self.state = .stop
+    @objc func stopGame() {
+        previousState = state
+        state = .stop
+    }
+    
+    func continueGame() {
+        state = previousState
     }
     
     func gameStatics() -> GTMLevelStat {
@@ -143,6 +162,10 @@ class GTMGameModel: NSObject {
         return player
     }
     
+    private func setCountdownState() {
+        state = .countdown
+    }
+    
     func answerFor(index: Int) -> GTMAnswerData {
         let answer = currentAnswers[index]
         
@@ -153,7 +176,11 @@ class GTMGameModel: NSObject {
         return URL(string: "https://is3-ssl.mzstatic.com/image/thumb/Features/6f/c2/e0/dj.mlahzdak.jpg/1200x630bb.jpg")
     }
     
-    func userDidAnswer(index: Int) -> Bool {
+    func userDidAnswer(index: Int) -> Bool? {
+        guard !isGameOnPause else {
+            return nil
+        }
+        
         player.stop()
         
         let answer = currentAnswers[index]
@@ -170,7 +197,12 @@ class GTMGameModel: NSObject {
     }
     
     func userDidSwap() {
+        guard !isGameOnPause else {
+            return
+        }
+        
         player.stop()
+        timer?.pause()
         level.userDidSwap()
         self.state = .preparing
     }
@@ -184,6 +216,7 @@ class GTMGameModel: NSObject {
     }
     
     deinit {
+        NotificationCenter.default.removeObserver(self)
         print("dainit - GTMGameModel")
     }
 }
@@ -195,7 +228,6 @@ extension GTMGameModel: GTMPlayerDelegate {
     func endLoad() {
         self.state = .listening
         self.startStopLoading?(false)
-        self.player.start()
     }
     func error() {
         SwiftyBeaver.error("player load with error")

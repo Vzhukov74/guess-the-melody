@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Level End View Controller-->
+        <scene sceneID="efj-4N-Dji">
+            <objects>
+                <viewController storyboardIdentifier="LevelEndViewController" id="qyJ-rx-tp6" customClass="LevelEndViewController" customModule="guess_the_melody" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WQB-lg-zqZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahm-fU-Ann">
+                                <rect key="frame" x="10" y="60" width="355" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRa-B8-wwe">
+                                <rect key="frame" x="63.5" y="613" width="247.5" height="34"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieg-yq-erA">
+                                <rect key="frame" x="63.5" y="571" width="247.5" height="34"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fRa-B8-wwe" firstAttribute="top" secondItem="ieg-yq-erA" secondAttribute="bottom" constant="8" id="7do-yn-ccI"/>
+                            <constraint firstItem="ieg-yq-erA" firstAttribute="width" secondItem="fRa-B8-wwe" secondAttribute="width" id="8Pi-Lu-8nz"/>
+                            <constraint firstItem="ieg-yq-erA" firstAttribute="centerX" secondItem="WQB-lg-zqZ" secondAttribute="centerX" id="ABn-B5-CN3"/>
+                            <constraint firstItem="fRa-B8-wwe" firstAttribute="centerX" secondItem="WQB-lg-zqZ" secondAttribute="centerX" id="DgQ-tN-0xL"/>
+                            <constraint firstItem="ahm-fU-Ann" firstAttribute="top" secondItem="tOI-Br-jNP" secondAttribute="top" constant="40" id="Hae-go-Xsm"/>
+                            <constraint firstItem="tOI-Br-jNP" firstAttribute="trailing" secondItem="ahm-fU-Ann" secondAttribute="trailing" constant="10" id="MLK-cr-D8r"/>
+                            <constraint firstItem="tOI-Br-jNP" firstAttribute="bottom" secondItem="fRa-B8-wwe" secondAttribute="bottom" constant="20" id="Y7Q-1N-aFI"/>
+                            <constraint firstItem="fRa-B8-wwe" firstAttribute="width" secondItem="WQB-lg-zqZ" secondAttribute="width" multiplier="0.66" id="gHy-VE-AH0"/>
+                            <constraint firstItem="ahm-fU-Ann" firstAttribute="leading" secondItem="tOI-Br-jNP" secondAttribute="leading" constant="10" id="hZX-bp-BhV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tOI-Br-jNP"/>
+                    </view>
+                    <connections>
+                        <outlet property="goToMenu" destination="fRa-B8-wwe" id="1q2-a2-nrp"/>
+                        <outlet property="playAgainOrNext" destination="ieg-yq-erA" id="gl0-uV-DSz"/>
+                        <outlet property="titleLabel" destination="ahm-fU-Ann" id="gn3-ji-phP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KDT-iz-iog" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-95" y="74"/>
+        </scene>
+    </scenes>
+</document>

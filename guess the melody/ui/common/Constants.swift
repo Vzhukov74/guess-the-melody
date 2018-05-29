@@ -19,4 +19,6 @@ class Colors {
     static let musicPlate7 = UIColor(hexStr: "34405A")
     
     static let mainTextColor = UIColor(hexStr: "34405A")
+    
+    static let gradientStart = UIColor(hexStr: "FF9262")
 }

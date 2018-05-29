@@ -50,6 +50,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.configurePlayAndPauseButton), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        self.view.backgroundColor = Colors.gradientStart
         activity.color = UIColor.white
         
         setupRightAnswerView()
@@ -70,12 +73,12 @@ class GameViewController: UIViewController {
             }
         }
         
-        answersView.userDidAnswer = { [weak self] (index) in
-            self?.useDidAnswer(index: index)
+        answersView.userDidAnswer = { [unowned self] (index) in
+            return self.useDidAnswer(index: index)
         }
         
-        answersView.userDidSwap = { [weak self] in
-            self?.useDidSwap()
+        answersView.userDidSwap = { [unowned self] in
+            return self.useDidSwap()
         }
         
         model.updateUI = { [weak self] (swap, life, rightAnswers) in
@@ -93,7 +96,14 @@ class GameViewController: UIViewController {
             } else {
                 self?.activity.stopAnimating()
                 self?.activity.isHidden = true
-                self?.startSpin()
+            }
+        }
+        
+        model.startStopSpin = { [weak self] (isSpinning) in
+            if isSpinning {
+               self?.startSpin()
+            } else {
+                self?.stopSpin()
             }
         }
         
@@ -102,16 +112,45 @@ class GameViewController: UIViewController {
         }
         
         model.gameOver = { [weak self] isUserWin in
-            if isUserWin {
-                self?.setNextLevel()
-            } else {
-                self?.playAgain()
-            }
-        }
-        
-        model.startGame()
-        
+            self?.showWinOrLoseVC(isUserWin: isUserWin)
+        }        
         self.view.addSubview(activity)
+        model.startGame()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        answersView.isHidden = false
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configurePlayAndPauseButton()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        model.stopGame()
+        answersView.isHidden = true
+    }
+
+    private func showWinOrLoseVC(isUserWin: Bool) {
+        if let vc = LevelEndViewController.storyboardInstance {
+            vc.isUserWin = isUserWin
+            vc.completion = { [weak self] action in
+                switch action {
+                case .goToMenu:
+                    self?.navigationController?.popToRootViewController(animated: true)
+                case .goToNextLevel:
+                    self?.setNextLevel()
+                case .palyAgain:
+                    self?.playAgain()
+                }
+                
+            }
+            present(vc, animated: true, completion: nil)
+        }
     }
     
     private func setNextLevel() {
@@ -120,7 +159,7 @@ class GameViewController: UIViewController {
     }
     
     private func playAgain() {
-        setNextLevel()
+        //setNextLevel()
         //model.playAgain()
         //model.startGame()
     }
@@ -151,16 +190,6 @@ class GameViewController: UIViewController {
         answersLabel.text = "\(String(rightAnswers))" + "/" + "\(String(model.totalAnswers()))"
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        model.startGame()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        model.stopGame()
-    }
-    
     private func setQuestion() {
         var data = [GTMAnswerData]()
         for index in 0..<4 {
@@ -178,24 +207,26 @@ class GameViewController: UIViewController {
     }
     
     deinit {
+        NotificationCenter.default.removeObserver(self)
         print("deinit - GameViewController")
     }
 }
 
 @objc extension GameViewController {
-    private func useDidAnswer(index: Int) {
-        stopSpin()
-        let isCorrect = model.userDidAnswer(index: index)
-        if isCorrect {
-            showRightAnswerView()
-        } else {
-            showWrongAnswerView()
+    private func useDidAnswer(index: Int) -> Bool {
+        if let isCorrect = model.userDidAnswer(index: index) {
+            if isCorrect {
+                showRightAnswerView()
+            } else {
+                showWrongAnswerView()
+            }
         }
+        return !model.isGameOnPause
     }
     
-    private func useDidSwap() {
-        stopSpin()
+    private func useDidSwap() -> Bool {
         model.userDidSwap()
+        return !model.isGameOnPause
     }
     
     private func closeButtonAction() {
@@ -203,7 +234,20 @@ class GameViewController: UIViewController {
     }
     
     private func playAndPauseButtonAction() {
-        
+        if model.isGameOnPause {
+            model.continueGame()
+        } else {
+            model.stopGame()
+        }
+        configurePlayAndPauseButton()
+    }
+    
+    private func configurePlayAndPauseButton() {
+        if model.isGameOnPause {
+            playAndPauseButton.setTitle("Play", for: .normal)
+        } else {
+            playAndPauseButton.setTitle("Pause", for: .normal)
+        }
     }
 }
 

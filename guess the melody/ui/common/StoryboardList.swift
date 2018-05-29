@@ -14,6 +14,7 @@ enum StoryboardList: String {
     case main = "MainNavigationController"
     case menu = "MenuViewController"
     case game = "GameViewController"
+    case levelEnd = "LevelEndViewController"
 }
 
 protocol StoryboardInstanceable {

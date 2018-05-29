@@ -24,8 +24,8 @@ class AnswersView: UIView {
     private var swapIsLock = false
     private var answersIsHide = false
     
-    var userDidAnswer: ((_ index: Int) -> Void)?
-    var userDidSwap: (() -> Void)?
+    var userDidAnswer: ((_ index: Int) -> Bool)?
+    var userDidSwap: (() -> Bool)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -123,8 +123,6 @@ class AnswersView: UIView {
         }
     }
     
-
-    
     private func spin(view: UIView) {
         UIView.animate(withDuration: 0.2, animations: {
             view.transform = CGAffineTransform(rotationAngle: .pi)
@@ -194,16 +192,22 @@ class AnswersView: UIView {
     
     private func useDidAnswer(index: Int) {
         assert(index < 4)
-        self.hideAnswers(completion: nil)
-        self.userDidAnswer?(index)
+        guard userDidAnswer != nil else { return }
+        
+        if self.userDidAnswer!(index) {
+            self.hideAnswers(completion: nil)
+        }
     }
     
     private func useDidSwap() {
+        guard userDidSwap != nil else { return }
+        
         if swapIsLock {
             self.shake(view: self.swapButton)
         } else {
-            self.userDidSwap?()
-            self.spin(view: self.swapButton)
+            if self.userDidSwap!() {
+                self.spin(view: self.swapButton)
+            }
         }
     }
 }
