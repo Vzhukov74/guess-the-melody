@@ -9,17 +9,26 @@
 import UIKit
 
 class MusicPlateView: UIView {
-    enum Spin {
-        case pi
-        case zero
+    private let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+    private let rotationKey = "rotationAnimation"
+    
+    func startSpin() {
+        configureRotationAnimation()
+        self.layer.add(rotation, forKey: rotationKey)
     }
     
-    private var isSpinnig = false
-    private var spin: Spin = .zero
-    private var angle: Double = 0
+    func stopSpin() {
+        self.layer.removeAnimation(forKey: rotationKey)
+    }
+    
+    private func configureRotationAnimation() {
+        rotation.toValue = NSNumber(value: Double.pi)
+        rotation.duration = 1
+        rotation.isCumulative = true
+        rotation.repeatCount = Float.greatestFiniteMagnitude
+    }
     
     override func draw(_ rect: CGRect) {
-        
         let width = bounds.width
         let height = bounds.height / 8
         
@@ -99,34 +108,5 @@ class MusicPlateView: UIView {
         let circleLayer = CAShapeLayer()
         circleLayer.path = circle.cgPath
         self.layer.mask = circleLayer
-    }
-    
-    func startSpin() {
-        if !isSpinnig {
-            isSpinnig = true
-            spinWith(options: .curveEaseIn)
-        }
-    }
-    
-    func stopSpin() {
-        isSpinnig = false
-    }
-    
-    private func spinWith(options: UIViewAnimationOptions) {
-        UIView.animate(withDuration: 0.2, delay: 0, options: options, animations: {
-            self.angle += .pi / 2
-            
-            if self.angle > 2 * .pi {
-                self.angle = 0
-            }
- 
-            self.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
-        }) { (_) in
-            if self.isSpinnig {
-                self.spinWith(options: .curveLinear)
-            } else if options != .curveEaseOut {
-                self.spinWith(options: .curveEaseOut)
-            }
-        }
     }
 }
