@@ -19,8 +19,8 @@ class GTMQuestionManager {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GTMQuestionCD")
         let sortDescriptor = NSSortDescriptor(key: "isPassed", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        //let predicate = NSPredicate(format: "%K == %@", "isPassed", "false")
-        //fetchRequest.predicate = predicate
+        let predicate = NSPredicate(format: "%K == %@", "isPassed", "false")
+        fetchRequest.predicate = predicate
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: GTMCoreDataManager.shared.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         do {
             try fetchedResultsController.performFetch()
@@ -40,32 +40,8 @@ class GTMQuestionManager {
             return nil
         }
     }
-    
-    func getQuestions(count: Int) -> [GTMQuestionCD] {
-        var questions = [GTMQuestionCD]()
-        
-        if (_currentIndex + count) < _questions.count {
-            let arraySlice = _questions[_currentIndex..<_currentIndex + count]
-            questions = Array(arraySlice)
-            _currentIndex += count
-            assert(count == questions.count)
-        }
-        return questions
-    }
-    
-    func setQuestionAsPassed(question: GTMQuestion) {
-        //        do {
-        //            let db = try Realm()
-        //            let songURL = question.rightAnswer?.songUrl ?? "-"
-        //            let predicate = NSPredicate(format: "url == %@", songURL)
-        //            if let question = Array(db.objects(Question.self).filter(predicate)).first {
-        //
-        //                try db.write {
-        //                    question.isPassed = true
-        //                }
-        //            }
-        //        } catch {
-        //            print(error.localizedDescription)
-        //        }
+
+    func setQuestionAsPassed(question: GTMQuestionCD) {
+        question.isPassed = true
     }
 }

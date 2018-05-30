@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import AVFoundation
-import AudioToolbox
 import SwiftyBeaver
 
 typealias GTMAnswerData = (songName: String, authorName: String)
@@ -17,6 +15,7 @@ class GTMGameModel: NSObject {
     private let questionStore = GTMQuestionManager()
     private var level: GTMGameLevelManager!
     
+    private var question: GTMQuestionCD!
     private var currentQuestion: GTMQuestion!
     private var currentAnswers = [GTMAnswer]()
     
@@ -142,6 +141,7 @@ class GTMGameModel: NSObject {
     
     private func setQuestion() {
         guard let question = questionStore.getQuestion() else { return }
+        self.question = question
         self.currentQuestion = GTMQuestion()
         self.currentQuestion.setData(data: question)
         
@@ -153,15 +153,7 @@ class GTMGameModel: NSObject {
         player.setSongBy(urlStr: currentQuestion.rightAnswer?.songUrl ?? "")
         self.state = .preparing
     }
-    
-    private func setPlayerFor(question: GTMQuestion) -> AVPlayer {
-        guard let url = question.rightAnswer?.songUrl, !url.isEmpty else { return AVPlayer() }
-        
-        let item = AVPlayerItem(url: NSURL(string: url)! as URL)
-        let player = AVPlayer(playerItem: item)
-        return player
-    }
-    
+
     private func setCountdownState() {
         state = .countdown
     }
@@ -171,11 +163,7 @@ class GTMGameModel: NSObject {
         
         return (songName: answer.songName, authorName: answer.author)
     }
-    
-    func imageURLForQuestion() -> URL? {
-        return URL(string: "https://is3-ssl.mzstatic.com/image/thumb/Features/6f/c2/e0/dj.mlahzdak.jpg/1200x630bb.jpg")
-    }
-    
+
     func userDidAnswer(index: Int) -> Bool? {
         guard !isGameOnPause else {
             return nil
@@ -187,6 +175,9 @@ class GTMGameModel: NSObject {
         let isCorrect = (answer.songUrl == currentQuestion.rightAnswer!.songUrl)
         
         if isCorrect {
+            DispatchQueue.main.async {
+                self.questionStore.setQuestionAsPassed(question: self.question)
+            }
             level.userDidRightAnswer()
         } else {
             level.userDidWrongAnswer()
@@ -204,7 +195,7 @@ class GTMGameModel: NSObject {
         player.stop()
         timer?.pause()
         level.userDidSwap()
-        self.state = .preparing
+        setQuestion()
     }
     
     func totalLives() -> Int {
@@ -225,10 +216,12 @@ extension GTMGameModel: GTMPlayerDelegate {
     func startLoad() {
         self.startStopLoading?(true)
     }
+    
     func endLoad() {
         self.state = .listening
         self.startStopLoading?(false)
     }
+    
     func error() {
         SwiftyBeaver.error("player load with error")
     }
