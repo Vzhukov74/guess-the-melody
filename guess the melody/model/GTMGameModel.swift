@@ -12,6 +12,7 @@ import SwiftyBeaver
 typealias GTMAnswerData = (songName: String, authorName: String)
 
 class GTMGameModel: NSObject {
+    private let soundEngine = GTMGameSoundEngine()
     private let questionStore = GTMQuestionManager()
     private var level: GTMGameLevelManager!
     
@@ -65,6 +66,7 @@ class GTMGameModel: NSObject {
                 }
                 setCountdownState()
             case .countdown:
+                soundEngine.play(melodyURL: GTMGameSound.countdown)
                 startStopSpin?(true)
                 timer?.toggle()
             case .stop:
@@ -96,6 +98,9 @@ class GTMGameModel: NSObject {
         self.state = .initing
         
         self.level.didEndGame = { [weak self] isUserWin in
+            if isUserWin {
+                self?.soundEngine.play(melodyURL: GTMGameSound.levelPass, isVibrationActice: true)
+            }
             self?.gameOver?(isUserWin)
         }
         
@@ -134,9 +139,16 @@ class GTMGameModel: NSObject {
     func continueGame() {
         state = previousState
     }
-    
-    func gameStatics() -> GTMLevelStat {
-        return level.gameStatics()
+
+    func getResult() -> GTMLevelStat {
+        let result = GTMLevelStat()
+        if let levelResult = level.getResult() {
+            result.stars = Int(levelResult.stars)
+            result.numberOfError = Int(levelResult.numberOfError)
+            result.numberOfSwaps = Int(levelResult.numberOfSwaps)
+            result.score = Int(levelResult.score)
+        }
+        return result
     }
     
     private func setQuestion() {
@@ -175,11 +187,13 @@ class GTMGameModel: NSObject {
         let isCorrect = (answer.songUrl == currentQuestion.rightAnswer!.songUrl)
         
         if isCorrect {
+            soundEngine.play(melodyURL: GTMGameSound.correctAnswer)
             DispatchQueue.main.async {
                 self.questionStore.setQuestionAsPassed(question: self.question)
             }
             level.userDidRightAnswer()
         } else {
+            soundEngine.play(melodyURL: GTMGameSound.wrongAnswer)
             level.userDidWrongAnswer()
         }
         self.state = .preparing

@@ -65,15 +65,46 @@ class GTMGameLevelManager {
     func userDidRightAnswer() {
         wasRightAnswers += 1
         if Int(level.numberOfAnswers) == wasRightAnswers {
+            calculateStatistics()
             self.didEndGame?(true)
         }
     }
-    
-    func gameStatics() -> GTMLevelStat {
-        return calculateStatistics()
+
+    func calculateStatistics() {
+        let statistics = GTMLevelStatCD(context: GTMCoreDataManager.shared.managedObjectContext)
+        
+        let numberOfError = Int(level.life) - life
+        let numberOfSwaps = Int(level.swaps) - swaps
+        
+        statistics.numberOfError = Int64(numberOfError)
+        statistics.numberOfSwaps = Int64(numberOfSwaps)
+        statistics.score = Int64(calculateScore(numberOfSwap: numberOfSwaps, numberOfError: numberOfError))
+        statistics.stars = Int64(calculateStars(numberOfSwap: numberOfSwaps, numberOfError: numberOfError))
+        
+        level.levelStat = statistics
     }
     
-    private func calculateStatistics() -> GTMLevelStat {
-        return GTMLevelStat()
+    func getResult() -> GTMLevelStatCD? {
+        return level.levelStat
+    }
+    
+    private func calculateStars(numberOfSwap: Int, numberOfError: Int) -> Int {
+        
+        let swaps = Int(level.swaps) - numberOfSwap
+        
+        if swaps == 0 && numberOfError == 0 {
+            return 3
+        } else if numberOfSwap < 2 && numberOfError < 2 {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    
+    private func calculateScore(numberOfSwap: Int, numberOfError: Int) -> Int {
+        var score = Int(level.life) * 30 + Int(level.swaps) * 15
+        score -= numberOfSwap * 10 + numberOfError * 25
+        
+        return Int(score)
     }
 }

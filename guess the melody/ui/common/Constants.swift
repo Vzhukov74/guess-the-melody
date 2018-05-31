@@ -20,5 +20,9 @@ class Colors {
     
     static let mainTextColor = UIColor(hexStr: "34405A")
     
-    static let gradientStart = UIColor(hexStr: "FF9262")
+    static let background = UIColor(hexStr: "F8EBEF")
+    static let alertBackground = UIColor(hexStr: "F2333B")
+    static let starOn = UIColor(hexStr: "ec572e")
+    static let starOff = UIColor(hexStr: "221e22")
+    static let starHidden = UIColor(hexStr: "eaa63b")
 }

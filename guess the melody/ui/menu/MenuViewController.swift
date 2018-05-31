@@ -23,7 +23,7 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = Colors.gradientStart
+        self.view.backgroundColor = Colors.background
         navigationController?.navigationBar.isHidden = true
     }
 }

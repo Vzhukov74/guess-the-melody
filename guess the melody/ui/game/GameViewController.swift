@@ -52,7 +52,7 @@ class GameViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.configurePlayAndPauseButton), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
-        self.view.backgroundColor = Colors.gradientStart
+        self.view.backgroundColor = Colors.background
         activity.color = UIColor.white
         
         setupRightAnswerView()
@@ -137,6 +137,7 @@ class GameViewController: UIViewController {
 
     private func showWinOrLoseVC(isUserWin: Bool) {
         if let vc = LevelEndViewController.storyboardInstance {
+            vc.result = model.getResult()
             vc.isUserWin = isUserWin
             vc.completion = { [weak self] action in
                 switch action {
@@ -159,27 +160,28 @@ class GameViewController: UIViewController {
     }
     
     private func playAgain() {
-        //setNextLevel()
-        //model.playAgain()
-        //model.startGame()
+        model.playAgain()
+        model.startGame()
     }
     
     private func setupRightAnswerView() {
         self.view.addSubview(rightAnswerView)
         rightAnswerView.translatesAutoresizingMaskIntoConstraints = false
+        rightAnswerView.layer.cornerRadius = 4
         
         rightAnswerViewBottomConstrain = rightAnswerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 200)
         
-        NSLayoutConstraint.activate([rightAnswerView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8), rightAnswerView.heightAnchor.constraint(equalToConstant: 200), rightAnswerViewBottomConstrain, rightAnswerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 1)])
+        NSLayoutConstraint.activate([rightAnswerView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8), rightAnswerView.heightAnchor.constraint(equalToConstant: 120), rightAnswerViewBottomConstrain, rightAnswerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 1)])
     }
     
     private func setupWrongAnswerView() {
         self.view.addSubview(wrongAnswerView)
         wrongAnswerView.translatesAutoresizingMaskIntoConstraints = false
+        wrongAnswerView.layer.cornerRadius = 4
         
         wrongAnswerViewBottomConstrain = wrongAnswerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 200)
         
-        NSLayoutConstraint.activate([wrongAnswerView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8), wrongAnswerView.heightAnchor.constraint(equalToConstant: 200), wrongAnswerViewBottomConstrain, wrongAnswerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 1)])
+        NSLayoutConstraint.activate([wrongAnswerView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8), wrongAnswerView.heightAnchor.constraint(equalToConstant: 120), wrongAnswerViewBottomConstrain, wrongAnswerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 1)])
     }
     
     private func setLife(life: Int) {

@@ -13,6 +13,12 @@
 		040CDB0920B6D6F60084FE72 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 040CDB0820B6D6F60084FE72 /* SF-Pro-Display-Semibold.otf */; };
 		040CDB0A20B6D7110084FE72 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 040CDB0320B6D6D30084FE72 /* SF-Pro-Display-Light.otf */; };
 		040CDB0D20B6D7310084FE72 /* GTMFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CDB0C20B6D7310084FE72 /* GTMFonts.swift */; };
+		046A768320C00B25005CC175 /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 046A767C20C00B25005CC175 /* levelup.mp3 */; };
+		046A768520C00B25005CC175 /* error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 046A767E20C00B25005CC175 /* error.wav */; };
+		046A768820C00B25005CC175 /* countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 046A768120C00B25005CC175 /* countdown.wav */; };
+		046A768920C00B25005CC175 /* okay.wav in Resources */ = {isa = PBXBuildFile; fileRef = 046A768220C00B25005CC175 /* okay.wav */; };
+		046A768B20C00BB6005CC175 /* GTMGameSoundEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A768A20C00BB6005CC175 /* GTMGameSoundEngine.swift */; };
+		046A768D20C01428005CC175 /* LabelsSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A768C20C01428005CC175 /* LabelsSetting.swift */; };
 		04B944CA20BD767E00356E84 /* LevelEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B944C920BD767E00356E84 /* LevelEndViewController.swift */; };
 		04B944CC20BD768B00356E84 /* LevelEndViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B944CB20BD768B00356E84 /* LevelEndViewController.storyboard */; };
 		CF3585AC57C2668A8E4C74E5 /* Pods_guess_the_melody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */; };
@@ -109,6 +115,12 @@
 		040CDB0620B6D6ED0084FE72 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		040CDB0820B6D6F60084FE72 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		040CDB0C20B6D7310084FE72 /* GTMFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMFonts.swift; sourceTree = "<group>"; };
+		046A767C20C00B25005CC175 /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelup.mp3; sourceTree = "<group>"; };
+		046A767E20C00B25005CC175 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
+		046A768120C00B25005CC175 /* countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countdown.wav; sourceTree = "<group>"; };
+		046A768220C00B25005CC175 /* okay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = okay.wav; sourceTree = "<group>"; };
+		046A768A20C00BB6005CC175 /* GTMGameSoundEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMGameSoundEngine.swift; sourceTree = "<group>"; };
+		046A768C20C01428005CC175 /* LabelsSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsSetting.swift; sourceTree = "<group>"; };
 		04B944C920BD767E00356E84 /* LevelEndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelEndViewController.swift; sourceTree = "<group>"; };
 		04B944CB20BD768B00356E84 /* LevelEndViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LevelEndViewController.storyboard; sourceTree = "<group>"; };
 		1930C1C2485FECD5B5333751 /* Pods-guess the melody.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guess the melody.debug.xcconfig"; path = "Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody.debug.xcconfig"; sourceTree = "<group>"; };
@@ -226,6 +238,17 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		046A767B20C00B12005CC175 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				046A768120C00B25005CC175 /* countdown.wav */,
+				046A767E20C00B25005CC175 /* error.wav */,
+				046A767C20C00B25005CC175 /* levelup.mp3 */,
+				046A768220C00B25005CC175 /* okay.wav */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
 		04B944C820BD765100356E84 /* level end vc */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +304,7 @@
 		F50BFE6B209C85E4002B299A /* guess the melody */ = {
 			isa = PBXGroup;
 			children = (
+				046A767B20C00B12005CC175 /* sounds */,
 				040CDB0220B6D6A60084FE72 /* fonts */,
 				F5118E8A20A1C7F200C2D023 /* database */,
 				F50BFEA320A08033002B299A /* model */,
@@ -345,6 +369,7 @@
 				F50BFE8A209C86C2002B299A /* StoryboardList.swift */,
 				F50BFE97209C8AA0002B299A /* Constants.swift */,
 				040CDB0C20B6D7310084FE72 /* GTMFonts.swift */,
+				046A768C20C01428005CC175 /* LabelsSetting.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -394,6 +419,7 @@
 				F5C0C73C20A320F700C7BBAF /* GTMGameState.swift */,
 				F5C0C73E20A3260100C7BBAF /* GTMTimer.swift */,
 				F54A4D8220A9A28D00BB480D /* GTMQuestionManager.swift */,
+				046A768A20C00BB6005CC175 /* GTMGameSoundEngine.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -573,10 +599,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046A768920C00B25005CC175 /* okay.wav in Resources */,
 				04B944CC20BD768B00356E84 /* LevelEndViewController.storyboard in Resources */,
+				046A768820C00B25005CC175 /* countdown.wav in Resources */,
 				040CDB0A20B6D7110084FE72 /* SF-Pro-Display-Light.otf in Resources */,
 				F50BFE8F209C8763002B299A /* MenuViewController.storyboard in Resources */,
 				F50BFE88209C8675002B299A /* MainNavigationController.storyboard in Resources */,
+				046A768320C00B25005CC175 /* levelup.mp3 in Resources */,
 				040CDB0520B6D6DE0084FE72 /* SF-Pro-Display-Bold.otf in Resources */,
 				F50BFE93209C87DB002B299A /* GameViewController.storyboard in Resources */,
 				F50BFE7A209C85E8002B299A /* LaunchScreen.storyboard in Resources */,
@@ -586,6 +615,7 @@
 				040CDB0720B6D6ED0084FE72 /* SF-Pro-Display-Regular.otf in Resources */,
 				040CDB0920B6D6F60084FE72 /* SF-Pro-Display-Semibold.otf in Resources */,
 				F5118EB220A1E84D00C2D023 /* questions.json in Resources */,
+				046A768520C00B25005CC175 /* error.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +675,7 @@
 				F5187FEC20AB140F0026C1C7 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
 				F518800020AB140F0026C1C7 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
 				F5187FF720AB140F0026C1C7 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
+				046A768D20C01428005CC175 /* LabelsSetting.swift in Sources */,
 				F5C0C73920A3209800C7BBAF /* GTMQuestion.swift in Sources */,
 				F5118EAB20A1D31D00C2D023 /* GTMLevelCD+CoreDataProperties.swift in Sources */,
 				F54A4D8520A9A53300BB480D /* GTMDatabaseLoader.swift in Sources */,
@@ -673,6 +704,7 @@
 				F54A4D8C20A9AFC200BB480D /* LevelCell.swift in Sources */,
 				F50BFE8D209C875A002B299A /* MenuViewController.swift in Sources */,
 				F5C0C73420A3204600C7BBAF /* GTMHelper.swift in Sources */,
+				046A768B20C00BB6005CC175 /* GTMGameSoundEngine.swift in Sources */,
 				F5187FFB20AB140F0026C1C7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
 				F5187FEF20AB140F0026C1C7 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */,
 				F50BFE9E209C8B18002B299A /* CellExt.swift in Sources */,

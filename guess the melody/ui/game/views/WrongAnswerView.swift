@@ -26,6 +26,8 @@ class WrongAnswerView: UIView {
     }
     
     private func setup() {
+        backgroundColor = Colors.alertBackground
+        
         self.addSubview(nextButton)
         self.addSubview(titleLabel)
         
@@ -33,7 +35,10 @@ class WrongAnswerView: UIView {
         
         titleLabel.text = "It is wrong answer!"
         titleLabel.textAlignment = .center
+        titleLabel.textColor = UIColor.white
         nextButton.setTitle("next question", for: .normal)
+        nextButton.contentMode = .center
+        nextButton.tintColor = Colors.mainTextColor
         
         nextButton.addTarget(self, action: #selector(self.nextButtonAction), for: .touchUpInside)
     }
