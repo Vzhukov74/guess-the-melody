@@ -26,3 +26,8 @@ class Colors {
     static let starOff = UIColor(hexStr: "221e22")
     static let starHidden = UIColor(hexStr: "eaa63b")
 }
+
+class Images {
+    static let winUnicorn = UIImage(named: "winUnicorn")!
+    static let loseUnicorn = UIImage(named: "loseUnicorn")!
+}

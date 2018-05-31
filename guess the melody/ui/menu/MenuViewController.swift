@@ -26,6 +26,19 @@ class MenuViewController: UIViewController {
         self.view.backgroundColor = Colors.background
         navigationController?.navigationBar.isHidden = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    private func showAlertWith(message: String) {
+        let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
@@ -45,13 +58,17 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let level = model.levels[indexPath.row]
-        if level.isOpen {
+        if level.isOpen && !level.isPassed {
             if let vc = GameViewController.storyboardInstance {
                 vc.model = GTMGameModel(level: GTMGameLevelManager(level: level))
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            
+            if !level.isOpen {
+                showAlertWith(message: "Level is locked, you must pass previous levels!")
+            } else if level.isPassed {
+                showAlertWith(message: "Level is passed. You can pass level only once!")
+            }
         }
     }
     

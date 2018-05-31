@@ -19,6 +19,8 @@
 		046A768920C00B25005CC175 /* okay.wav in Resources */ = {isa = PBXBuildFile; fileRef = 046A768220C00B25005CC175 /* okay.wav */; };
 		046A768B20C00BB6005CC175 /* GTMGameSoundEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A768A20C00BB6005CC175 /* GTMGameSoundEngine.swift */; };
 		046A768D20C01428005CC175 /* LabelsSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A768C20C01428005CC175 /* LabelsSetting.swift */; };
+		046A769020C03E8E005CC175 /* GTMLevelsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A768F20C03E8E005CC175 /* GTMLevelsManager.swift */; };
+		046A769220C03EB9005CC175 /* GTMQuestionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A769120C03EB9005CC175 /* GTMQuestionsManager.swift */; };
 		04B944CA20BD767E00356E84 /* LevelEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B944C920BD767E00356E84 /* LevelEndViewController.swift */; };
 		04B944CC20BD768B00356E84 /* LevelEndViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B944CB20BD768B00356E84 /* LevelEndViewController.storyboard */; };
 		CF3585AC57C2668A8E4C74E5 /* Pods_guess_the_melody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */; };
@@ -94,7 +96,6 @@
 		F518800920AB141B0026C1C7 /* NVActivityIndicatorViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518800720AB141B0026C1C7 /* NVActivityIndicatorViewable.swift */; };
 		F518800A20AB141B0026C1C7 /* NVActivityIndicatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518800820AB141B0026C1C7 /* NVActivityIndicatorPresenter.swift */; };
 		F5309ACB20ADB24F00AA6553 /* RightAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5309ACA20ADB24F00AA6553 /* RightAnswerView.swift */; };
-		F54A4D8320A9A28D00BB480D /* GTMQuestionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54A4D8220A9A28D00BB480D /* GTMQuestionManager.swift */; };
 		F54A4D8520A9A53300BB480D /* GTMDatabaseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54A4D8420A9A53300BB480D /* GTMDatabaseLoader.swift */; };
 		F54A4D8820A9AA6600BB480D /* GTMMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54A4D8720A9AA6600BB480D /* GTMMenuModel.swift */; };
 		F54A4D8C20A9AFC200BB480D /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54A4D8A20A9AFC200BB480D /* LevelCell.swift */; };
@@ -121,6 +122,8 @@
 		046A768220C00B25005CC175 /* okay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = okay.wav; sourceTree = "<group>"; };
 		046A768A20C00BB6005CC175 /* GTMGameSoundEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMGameSoundEngine.swift; sourceTree = "<group>"; };
 		046A768C20C01428005CC175 /* LabelsSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsSetting.swift; sourceTree = "<group>"; };
+		046A768F20C03E8E005CC175 /* GTMLevelsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMLevelsManager.swift; sourceTree = "<group>"; };
+		046A769120C03EB9005CC175 /* GTMQuestionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMQuestionsManager.swift; sourceTree = "<group>"; };
 		04B944C920BD767E00356E84 /* LevelEndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelEndViewController.swift; sourceTree = "<group>"; };
 		04B944CB20BD768B00356E84 /* LevelEndViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LevelEndViewController.storyboard; sourceTree = "<group>"; };
 		1930C1C2485FECD5B5333751 /* Pods-guess the melody.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guess the melody.debug.xcconfig"; path = "Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody.debug.xcconfig"; sourceTree = "<group>"; };
@@ -201,7 +204,6 @@
 		F518800720AB141B0026C1C7 /* NVActivityIndicatorViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NVActivityIndicatorViewable.swift; path = "guess the melody/developer/NVActivityIndicatorView/Presenter/NVActivityIndicatorViewable.swift"; sourceTree = SOURCE_ROOT; };
 		F518800820AB141B0026C1C7 /* NVActivityIndicatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NVActivityIndicatorPresenter.swift; path = "guess the melody/developer/NVActivityIndicatorView/Presenter/NVActivityIndicatorPresenter.swift"; sourceTree = SOURCE_ROOT; };
 		F5309ACA20ADB24F00AA6553 /* RightAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightAnswerView.swift; sourceTree = "<group>"; };
-		F54A4D8220A9A28D00BB480D /* GTMQuestionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMQuestionManager.swift; sourceTree = "<group>"; };
 		F54A4D8420A9A53300BB480D /* GTMDatabaseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMDatabaseLoader.swift; sourceTree = "<group>"; };
 		F54A4D8720A9AA6600BB480D /* GTMMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMMenuModel.swift; sourceTree = "<group>"; };
 		F54A4D8A20A9AFC200BB480D /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
@@ -247,6 +249,15 @@
 				046A768220C00B25005CC175 /* okay.wav */,
 			);
 			path = sounds;
+			sourceTree = "<group>";
+		};
+		046A768E20C03E70005CC175 /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				046A768F20C03E8E005CC175 /* GTMLevelsManager.swift */,
+				046A769120C03EB9005CC175 /* GTMQuestionsManager.swift */,
+			);
+			path = managers;
 			sourceTree = "<group>";
 		};
 		04B944C820BD765100356E84 /* level end vc */ = {
@@ -410,6 +421,7 @@
 		F50BFEA320A08033002B299A /* model */ = {
 			isa = PBXGroup;
 			children = (
+				046A768E20C03E70005CC175 /* managers */,
 				F5187F6E20AAF61D0026C1C7 /* player */,
 				F54A4D8620A9AA4C00BB480D /* menu model */,
 				F5C0C73520A3206200C7BBAF /* game models */,
@@ -418,7 +430,6 @@
 				F5C0C73A20A320B800C7BBAF /* GTMCameLevelManager.swift */,
 				F5C0C73C20A320F700C7BBAF /* GTMGameState.swift */,
 				F5C0C73E20A3260100C7BBAF /* GTMTimer.swift */,
-				F54A4D8220A9A28D00BB480D /* GTMQuestionManager.swift */,
 				046A768A20C00BB6005CC175 /* GTMGameSoundEngine.swift */,
 			);
 			path = model;
@@ -670,6 +681,7 @@
 				F5118EA920A1D31D00C2D023 /* GTMQuestionCD+CoreDataClass.swift in Sources */,
 				F5187F7020AAF63D0026C1C7 /* GTMPlayer.swift in Sources */,
 				F5118EAA20A1D31D00C2D023 /* GTMLevelStatCD+CoreDataClass.swift in Sources */,
+				046A769220C03EB9005CC175 /* GTMQuestionsManager.swift in Sources */,
 				F518800920AB141B0026C1C7 /* NVActivityIndicatorViewable.swift in Sources */,
 				F5187FF020AB140F0026C1C7 /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
 				F5187FEC20AB140F0026C1C7 /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
@@ -689,7 +701,6 @@
 				F5118EAE20A1D31D00C2D023 /* GTMAnswerCD+CoreDataClass.swift in Sources */,
 				F5118EAF20A1D31D00C2D023 /* GTMQuestionCD+CoreDataProperties.swift in Sources */,
 				F5118EB020A1D31D00C2D023 /* GTMLevelStatCD+CoreDataProperties.swift in Sources */,
-				F54A4D8320A9A28D00BB480D /* GTMQuestionManager.swift in Sources */,
 				F50BFE8B209C86C2002B299A /* StoryboardList.swift in Sources */,
 				F50BFEA220A071FC002B299A /* AlbumImageView.swift in Sources */,
 				F54A4D8820A9AA6600BB480D /* GTMMenuModel.swift in Sources */,
@@ -744,6 +755,7 @@
 				040CDB0120B6C6B00084FE72 /* WrongAnswerView.swift in Sources */,
 				F50BFE91209C87D0002B299A /* GameViewController.swift in Sources */,
 				F5187FFD20AB140F0026C1C7 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
+				046A769020C03E8E005CC175 /* GTMLevelsManager.swift in Sources */,
 				F5187FF820AB140F0026C1C7 /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
 				F518800320AB140F0026C1C7 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
 				F50BFE75209C85E4002B299A /* guess_the_melody.xcdatamodeld in Sources */,

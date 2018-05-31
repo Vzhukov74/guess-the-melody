@@ -66,6 +66,7 @@ class GTMGameLevelManager {
         wasRightAnswers += 1
         if Int(level.numberOfAnswers) == wasRightAnswers {
             calculateStatistics()
+            GTMLevelsManager.shared.setLevelAsPassed(level: level)
             self.didEndGame?(true)
         }
     }

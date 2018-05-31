@@ -1,8 +1,8 @@
 //
-//  GTMQuestionManager.swift
+//  GTMQuestionsManager.swift
 //  guess the melody
 //
-//  Created by Vlad on 14.05.2018.
+//  Created by Maximal Mac on 31.05.2018.
 //  Copyright © 2018 VZ. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import SwiftyBeaver
 
-class GTMQuestionManager {
+class GTMQuestionsManager {
     
     private var _questions = [GTMQuestionCD]()
     private var _currentIndex = 0
@@ -40,7 +40,7 @@ class GTMQuestionManager {
             return nil
         }
     }
-
+    
     func setQuestionAsPassed(question: GTMQuestionCD) {
         question.isPassed = true
     }

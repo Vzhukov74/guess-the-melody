@@ -13,7 +13,7 @@ typealias GTMAnswerData = (songName: String, authorName: String)
 
 class GTMGameModel: NSObject {
     private let soundEngine = GTMGameSoundEngine()
-    private let questionStore = GTMQuestionManager()
+    private let questionStore = GTMQuestionsManager()
     private var level: GTMGameLevelManager!
     
     private var question: GTMQuestionCD!
@@ -101,6 +101,7 @@ class GTMGameModel: NSObject {
             if isUserWin {
                 self?.soundEngine.play(melodyURL: GTMGameSound.levelPass, isVibrationActice: true)
             }
+            
             self?.gameOver?(isUserWin)
         }
         
@@ -108,7 +109,7 @@ class GTMGameModel: NSObject {
     }
     
     func setNextLevel() {
-        if let _level = GTMLevelsHelper.shared.getNextLevelFor(level: level.level) {
+        if let _level = GTMLevelsManager.shared.getNextLevelFor(level: level.level) {
             level = GTMGameLevelManager(level: _level)
             self.updateUI?(level.getSwaps(), level.getLife(), level.getNumberOfAnswers())
             self.updateTime?("--")

@@ -48,7 +48,6 @@ class LevelEndViewController: UIViewController {
         }
     }
     
-    
     var isUserWin: Bool!
     var result: GTMLevelStat?
     var completion: ((_ action: GTMLevelEndActions) -> Void)?
@@ -68,11 +67,13 @@ class LevelEndViewController: UIViewController {
     }
     
     private func configureAsWinVC() {
+        titleImage.image = Images.winUnicorn
         playAgainOrNext.setTitle("Go to Next Level!", for: .normal)
         configureStar(stars: result?.stars ?? 0)
     }
     
     private func configureAsLoseVC() {
+        titleImage.image = Images.loseUnicorn
         playAgainOrNext.setTitle("Play Again", for: .normal)
     }
     

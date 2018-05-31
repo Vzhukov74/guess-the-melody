@@ -80,7 +80,7 @@ class LevelCell: UITableViewCell, CellRegistable, CellDequeueReusable {
         didSet {
             lockLabel.type = .cellLockTitle
             lockLabel.numberOfLines = 2
-            lockLabel.text = "Level is lock\n you must pass previous levels!"
+            lockLabel.text = "Level is locked\n you must pass previous levels!"
         }
     }
     
