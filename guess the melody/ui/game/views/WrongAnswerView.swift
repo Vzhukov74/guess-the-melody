@@ -36,7 +36,9 @@ class WrongAnswerView: UIView {
         titleLabel.text = "It is wrong answer!"
         titleLabel.textAlignment = .center
         titleLabel.textColor = UIColor.white
-        nextButton.setTitle("next question", for: .normal)
+        titleLabel.font = GTMFonts.sfProDisplayRegular_16
+        nextButton.setTitle("Next question!", for: .normal)
+        nextButton.titleLabel?.font = GTMFonts.sfProDisplayRegular_20
         nextButton.contentMode = .center
         nextButton.tintColor = Colors.mainTextColor
         
@@ -47,8 +49,8 @@ class WrongAnswerView: UIView {
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let nextButtonConstrains = [nextButton.widthAnchor.constraint(equalToConstant: 200), nextButton.heightAnchor.constraint(equalToConstant: 50), nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20)]
-        let titleLabelConstrains = [titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20), titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20), titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10)]
+        let nextButtonConstrains = [nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20), nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20), nextButton.heightAnchor.constraint(equalToConstant: 50), nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12)]
+        let titleLabelConstrains = [titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20), titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20), titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 12)]
         
         NSLayoutConstraint.activate(nextButtonConstrains)
         NSLayoutConstraint.activate(titleLabelConstrains)

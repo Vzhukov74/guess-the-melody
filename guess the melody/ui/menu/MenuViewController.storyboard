@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Menu View Controller-->
         <scene sceneID="Ep7-5t-gu2">
@@ -22,23 +30,83 @@
                                 <rect key="frame" x="0.0" y="180" width="375" height="487"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFf-u8-Gz4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="160"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unicorn Melody" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLA-nr-7ZH">
+                                        <rect key="frame" x="20" y="25" width="335" height="31.5"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="26"/>
+                                        <color key="textColor" red="0.20392156862745098" green="0.25098039215686274" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your progress:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nec-PG-TCR">
+                                        <rect key="frame" x="20" y="72.5" width="335" height="20"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
+                                        <color key="textColor" red="0.20392156862745098" green="0.25098039215686274" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPN-BR-biX">
+                                        <rect key="frame" x="20" y="96.5" width="335" height="6"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="6" id="gil-Qw-lLJ"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRd-fR-Lnx">
+                                        <rect key="frame" x="20" y="110" width="335" height="20"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
+                                        <color key="textColor" red="0.20392156862745098" green="0.25098039215686274" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3M-kU-fkU">
+                                        <rect key="frame" x="20" y="132" width="335" height="20"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
+                                        <color key="textColor" red="0.20392156862745098" green="0.25098039215686274" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="TPN-BR-biX" firstAttribute="top" secondItem="nec-PG-TCR" secondAttribute="bottom" constant="4" id="1y0-Gg-cK1"/>
+                                    <constraint firstItem="VLA-nr-7ZH" firstAttribute="leading" secondItem="BFf-u8-Gz4" secondAttribute="leading" constant="20" id="3ZN-pT-zvt"/>
+                                    <constraint firstItem="nec-PG-TCR" firstAttribute="top" secondItem="VLA-nr-7ZH" secondAttribute="bottom" constant="16" id="3sT-PB-i9e"/>
+                                    <constraint firstAttribute="trailing" secondItem="MRd-fR-Lnx" secondAttribute="trailing" constant="20" id="7bx-Id-AaF"/>
+                                    <constraint firstAttribute="trailing" secondItem="nec-PG-TCR" secondAttribute="trailing" constant="20" id="A0f-ug-bR5"/>
+                                    <constraint firstAttribute="trailing" secondItem="TPN-BR-biX" secondAttribute="trailing" constant="20" id="BzW-Pe-HJm"/>
+                                    <constraint firstItem="VLA-nr-7ZH" firstAttribute="top" secondItem="BFf-u8-Gz4" secondAttribute="top" constant="25" id="Dtw-VR-Mhq"/>
+                                    <constraint firstItem="m3M-kU-fkU" firstAttribute="top" secondItem="MRd-fR-Lnx" secondAttribute="bottom" constant="2" id="FBa-6R-wFp"/>
+                                    <constraint firstItem="MRd-fR-Lnx" firstAttribute="leading" secondItem="BFf-u8-Gz4" secondAttribute="leading" constant="20" id="G0Q-St-q7A"/>
+                                    <constraint firstAttribute="trailing" secondItem="VLA-nr-7ZH" secondAttribute="trailing" constant="20" id="YWw-KN-0dQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="m3M-kU-fkU" secondAttribute="trailing" constant="20" id="igd-LP-TIy"/>
+                                    <constraint firstItem="nec-PG-TCR" firstAttribute="leading" secondItem="BFf-u8-Gz4" secondAttribute="leading" constant="20" id="l5N-7w-kpt"/>
+                                    <constraint firstItem="MRd-fR-Lnx" firstAttribute="top" secondItem="TPN-BR-biX" secondAttribute="bottom" constant="8" id="lKS-Hv-dLO"/>
+                                    <constraint firstItem="TPN-BR-biX" firstAttribute="leading" secondItem="BFf-u8-Gz4" secondAttribute="leading" constant="20" id="lNT-g2-eHZ"/>
+                                    <constraint firstItem="m3M-kU-fkU" firstAttribute="leading" secondItem="BFf-u8-Gz4" secondAttribute="leading" constant="20" id="xhq-Hr-xcl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="BFf-u8-Gz4" firstAttribute="top" secondItem="5F3-zc-bkg" secondAttribute="top" id="854-Xk-eWw"/>
+                            <constraint firstItem="uep-qD-rj0" firstAttribute="top" secondItem="BFf-u8-Gz4" secondAttribute="bottom" id="88a-mS-xpa"/>
                             <constraint firstItem="5F3-zc-bkg" firstAttribute="bottom" secondItem="uep-qD-rj0" secondAttribute="bottom" id="CUx-OS-kgU"/>
                             <constraint firstItem="uep-qD-rj0" firstAttribute="leading" secondItem="5F3-zc-bkg" secondAttribute="leading" id="G93-zb-10V"/>
+                            <constraint firstItem="BFf-u8-Gz4" firstAttribute="leading" secondItem="5F3-zc-bkg" secondAttribute="leading" id="L5g-17-OAc"/>
                             <constraint firstItem="uep-qD-rj0" firstAttribute="top" secondItem="5F3-zc-bkg" secondAttribute="top" constant="160" id="eiV-Py-EJz"/>
                             <constraint firstItem="5F3-zc-bkg" firstAttribute="trailing" secondItem="uep-qD-rj0" secondAttribute="trailing" id="nqz-Wk-HIF"/>
+                            <constraint firstItem="5F3-zc-bkg" firstAttribute="trailing" secondItem="BFf-u8-Gz4" secondAttribute="trailing" id="u9T-fb-OMi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5F3-zc-bkg"/>
                     </view>
                     <connections>
+                        <outlet property="progressBackgroundView" destination="TPN-BR-biX" id="HWC-Ji-dXg"/>
+                        <outlet property="scoreLabel" destination="m3M-kU-fkU" id="NAs-8q-2aw"/>
                         <outlet property="tableView" destination="uep-qD-rj0" id="ark-pc-2w8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JaK-aI-cpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-57" y="-46"/>
+            <point key="canvasLocation" x="-58.399999999999999" y="-46.326836581709152"/>
         </scene>
     </scenes>
 </document>

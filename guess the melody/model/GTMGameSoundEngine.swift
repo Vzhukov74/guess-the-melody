@@ -47,7 +47,7 @@ class GTMGameSound {
 }
 
 class GTMGameSoundEngine {
-    private var player = AVAudioPlayer()
+    private var player: AVAudioPlayer?
     private let queue = DispatchQueue(label: "md.vz.audio")
 
     func play(melodyURL: URL, isVibrationActice: Bool = false) {
@@ -58,14 +58,24 @@ class GTMGameSoundEngine {
                     try AVAudioSession.sharedInstance().setActive(true)
                     
                     try self.player = AVAudioPlayer(contentsOf: melodyURL)
-                    self.player.prepareToPlay()
-                    self.player.play()
+                    self.player!.prepareToPlay()
+                    self.player!.play()
                     if isVibrationActice {
                         self.vibration()
                     }
                 } catch {
                     SwiftyBeaver.error(error.localizedDescription)
                 }
+            }
+        }
+    }
+    
+    func stop() {
+        queue.async {
+            guard self.player != nil else { return }
+            
+            if self.player!.isPlaying {
+                self.player!.stop()
             }
         }
     }

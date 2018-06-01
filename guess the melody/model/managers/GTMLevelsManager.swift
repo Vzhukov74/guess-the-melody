@@ -30,8 +30,12 @@ class GTMLevelsManager {
     }
     
     func getNextLevelFor(level: GTMLevelCD) -> GTMLevelCD? {
-        let index: Int = Int(level.id) - 1
-        return levels[index]
+        let index: Int = Int(level.id)
+        if index < levels.count {
+            return levels[index]
+        } else {
+            return nil
+        }
     }
     
     func setLevelAsPassed(level: GTMLevelCD) {
@@ -41,5 +45,31 @@ class GTMLevelsManager {
         if nextLevelId <= levels.count {
             levels[nextLevelId - 1].isOpen = true
         }
+        GTMCoreDataManager.shared.saveContext()
+    }
+    
+    func score() -> Int {
+        var score = 0
+        for level in levels {
+            if level.isPassed {
+                score += Int(level.levelStat?.score ?? 0)
+            }
+        }
+        return score
+    }
+    
+    func progress() -> Float {
+        var progress: Float = 0
+        var passedLevels: Float = 0
+        
+        for level in levels {
+            if level.isPassed {
+                passedLevels += 1
+            }
+        }
+        
+        progress = passedLevels / Float(levels.count)
+        
+        return progress
     }
 }

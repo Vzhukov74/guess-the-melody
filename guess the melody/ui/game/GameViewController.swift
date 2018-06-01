@@ -35,6 +35,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var livesLabel: UILabel!
     @IBOutlet weak var answersLabel: UILabel!
+    @IBOutlet weak var loadingLabel: UILabel!
 
     
     private let rightAnswerView = RightAnswerView()
@@ -53,7 +54,7 @@ class GameViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.configurePlayAndPauseButton), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         self.view.backgroundColor = Colors.background
-        activity.color = UIColor.white
+        activity.color = Colors.alertBackground
         
         setupRightAnswerView()
         rightAnswerView.nextAction = { [weak self] in
@@ -82,14 +83,19 @@ class GameViewController: UIViewController {
         }
         
         model.updateUI = { [weak self] (swap, life, rightAnswers) in
-            self?.answersView.configureSwapButton(swap: swap)
-            self?.setLife(life: life)
-            self?.setRightAnswers(rightAnswers: rightAnswers)
+            guard let `self` = self else { return }
             
-            self?.setQuestion()
+            let swapsTotal = self.model.swapsTotal()
+            self.answersView.configureSwapButton(swapsLeft: swap, swapsTotal: swapsTotal)
+            self.setLife(life: life)
+            self.setRightAnswers(rightAnswers: rightAnswers)
+            
+            self.setQuestion()
         }
         
         model.startStopLoading = { [weak self] (isLoading) in
+            self?.loadingLabel.isHidden = !isLoading
+            self?.answersView.isLock = isLoading
             if isLoading {
                 self?.activity.startAnimating()
                 self?.activity.isHidden = false
@@ -136,6 +142,9 @@ class GameViewController: UIViewController {
     }
 
     private func showWinOrLoseVC(isUserWin: Bool) {
+        hideRightAnswerView()
+        hideWrongAnswerView()
+        
         if let vc = LevelEndViewController.storyboardInstance {
             vc.result = model.getResult()
             vc.isUserWin = isUserWin

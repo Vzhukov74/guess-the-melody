@@ -24,6 +24,7 @@ class AnswersView: UIView {
     private var swapIsLock = false
     private var answersIsHide = false
     
+    var isLock: Bool = false
     var userDidAnswer: ((_ index: Int) -> Bool)?
     var userDidSwap: (() -> Bool)?
     
@@ -79,7 +80,7 @@ class AnswersView: UIView {
     private func configureButton() {
         swapButton.setTitle("swap", for: .normal)
         swapButton.titleLabel?.font = GTMFonts.sfProDisplayRegular_16
-        swapButton.titleLabel?.textColor = UIColor.white
+        swapButton.tintColor = Colors.mainTextColor
         swapButton.addTarget(self, action: #selector(self.useDidSwap), for: .touchUpInside)
     }
     
@@ -111,10 +112,10 @@ class AnswersView: UIView {
         unhideAnswers(data: data)
     }
     
-    func configureSwapButton(swap: Int) {
-        swapIsLock = swap == 0
+    func configureSwapButton(swapsLeft: Int, swapsTotal: Int) {
+        swapIsLock = swapsLeft == 0
         
-        self.swapButton.setTitle("Swaps: \(String(swap))/\(String(swap))" as String, for: .normal)
+        self.swapButton.setTitle("Swaps: \(String(swapsLeft))/\(String(swapsTotal))" as String, for: .normal)
     }
     
     private func animateWith(data: [GTMAnswerData]) {
@@ -192,7 +193,7 @@ class AnswersView: UIView {
     
     private func useDidAnswer(index: Int) {
         assert(index < 4)
-        guard userDidAnswer != nil else { return }
+        guard userDidAnswer != nil, !isLock else { return }
         
         if self.userDidAnswer!(index) {
             self.hideAnswers(completion: nil)
@@ -200,7 +201,7 @@ class AnswersView: UIView {
     }
     
     private func useDidSwap() {
-        guard userDidSwap != nil else { return }
+        guard userDidSwap != nil, !isLock else { return }
         
         if swapIsLock {
             self.shake(view: self.swapButton)

@@ -41,19 +41,16 @@ class GTMGameLevelManager {
         return Int(level.numberOfAnswers)
     }
     
+    func swapsTotal() -> Int {
+        return Int(level.swaps)
+    }
+    
     func userDidSwap() {
         swaps -= 1
     }
     
     func getNumberOfAnswers() -> Int {
         return wasRightAnswers
-    }
-    
-    func userDidWrongAnswer() {
-        life -= 1
-        if life <= 0 {
-            self.didEndGame?(false)
-        }
     }
     
     func reset() {
@@ -68,6 +65,13 @@ class GTMGameLevelManager {
             calculateStatistics()
             GTMLevelsManager.shared.setLevelAsPassed(level: level)
             self.didEndGame?(true)
+        }
+    }
+    
+    func userDidWrongAnswer() {
+        life -= 1
+        if life == 0 {
+            self.didEndGame?(false)
         }
     }
 

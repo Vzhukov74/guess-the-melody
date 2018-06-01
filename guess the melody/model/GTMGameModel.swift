@@ -30,6 +30,7 @@ class GTMGameModel: NSObject {
             case .initing: return
             case .preparing:
                 self.timer?.pause()
+                soundEngine.stop()
                 startStopSpin?(false)
                 updateTime?("--")
                 self.updateUI?(level.getSwaps(), level.getLife(), level.getNumberOfAnswers())
@@ -219,6 +220,10 @@ class GTMGameModel: NSObject {
     
     func totalAnswers() -> Int {
         return level.totalAnswers()
+    }
+    
+    func swapsTotal() -> Int {
+        return level.swapsTotal()
     }
     
     deinit {

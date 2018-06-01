@@ -22,9 +22,9 @@ class Colors {
     
     static let background = UIColor(hexStr: "F8EBEF")
     static let alertBackground = UIColor(hexStr: "F2333B")
-    static let starOn = UIColor(hexStr: "ec572e")
-    static let starOff = UIColor(hexStr: "221e22")
-    static let starHidden = UIColor(hexStr: "eaa63b")
+    static let starOn = UIColor(hexStr: "F2333B")//UIColor(hexStr: "ec572e")
+    static let starOff = UIColor(hexStr: "34405A")//UIColor(hexStr: "221e22")
+    static let starHidden = UIColor.clear//(hexStr: "eaa63b")
 }
 
 class Images {

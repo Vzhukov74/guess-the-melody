@@ -14,4 +14,17 @@ class GTMMenuModel {
             return GTMLevelsManager.shared.levels
         }
     }
+    
+    var score: Int {
+        get {
+            return GTMLevelsManager.shared.score()
+        }
+    }
+    
+    var progress: Float {
+        get {
+            return GTMLevelsManager.shared.progress()
+        }
+    }
+    
 }

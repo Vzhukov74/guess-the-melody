@@ -18,18 +18,53 @@ class MenuViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var progressBackgroundView: UIView! {
+        didSet {
+            progressBackgroundView.layer.cornerRadius = 4
+            progressBackgroundView.clipsToBounds = true
+            progressBackgroundView.backgroundColor = Colors.mainTextColor
+        }
+    }
+    private var progressView = UIView(frame: CGRect(x: 0, y: 0, width:0 , height: 6))
+    
+    @IBOutlet weak var scoreLabel: UILabel! {
+        didSet {
+            scoreLabel.text = "--"
+        }
+    }
+    
     var model: GTMMenuModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        progressView.backgroundColor = Colors.alertBackground
         self.view.backgroundColor = Colors.background
         navigationController?.navigationBar.isHidden = true
+        
+        progressBackgroundView.addSubview(progressView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        setUI()
+    }
+    
+    private func setUI() {
+        scoreLabel.text = "\(model.score)"
+        setProgress()
+    }
+    
+    private func setProgress() {
+        let maxWigth = UIScreen.main.bounds.width - 2 * 40
+        
+        let progress: CGFloat = CGFloat(model.progress)
+        let wigth = maxWigth * progress
+        
+        UIView.animate(withDuration: 0.3) {
+            self.progressView.frame = CGRect(x: 0, y: 0, width: wigth, height: 6)
+        }
     }
     
     private func showAlertWith(message: String) {

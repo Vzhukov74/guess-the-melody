@@ -101,7 +101,7 @@ class LevelCell: UITableViewCell, CellRegistable, CellDequeueReusable {
         didSet {
             starImg2.tintColor = Colors.starHidden
         }
-    }
+    }    
     
     @IBOutlet weak var starImg3: UIImageView! {
         didSet {
@@ -124,7 +124,7 @@ class LevelCell: UITableViewCell, CellRegistable, CellDequeueReusable {
         answersLabel.text = "\(level.numberOfAnswers)"
         timeLabel.text = "\(level.timeToAnswer)"
         
-        let stars = level.levelStat?.stars ?? 0
+        let stars = level.levelStat?.stars ?? 4
         configureStar(stars: Int(stars))
     }
     

@@ -32,10 +32,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         
-        UIApplication.shared.statusBarStyle = .lightContent
+        //setStatusBarBackgroundColor()
         
         return true
     }
+    
+//    private func setStatusBarBackgroundColor() {
+//        OperationQueue.main.addOperation {
+//            guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+//            statusBar.backgroundColor = Colors.alertBackground
+//        }
+//    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
