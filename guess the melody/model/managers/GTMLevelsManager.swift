@@ -50,10 +50,8 @@ class GTMLevelsManager {
     
     func score() -> Int {
         var score = 0
-        for level in levels {
-            if level.isPassed {
-                score += Int(level.levelStat?.score ?? 0)
-            }
+        for level in levels where level.isPassed {
+            score += Int(level.levelStat?.score ?? 0)
         }
         return score
     }
@@ -62,10 +60,8 @@ class GTMLevelsManager {
         var progress: Float = 0
         var passedLevels: Float = 0
         
-        for level in levels {
-            if level.isPassed {
-                passedLevels += 1
-            }
+        for level in levels where level.isPassed {
+            passedLevels += 1
         }
         
         progress = passedLevels / Float(levels.count)

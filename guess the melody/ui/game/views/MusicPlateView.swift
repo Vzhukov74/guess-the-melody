@@ -31,14 +31,7 @@ class MusicPlateView: UIView {
     override func draw(_ rect: CGRect) {
         let width = bounds.width
         let height = bounds.height / 8
-        
-        let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
-        
-        let radius: CGFloat = (bounds.width / 2) / 8
-        
-        let startAngle: CGFloat = 0
-        let endAngle: CGFloat = 2 * .pi
-        
+
         let path0 = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: width, height: height), cornerRadius: 0)
         path0.lineWidth = height
         let color0 = Colors.musicPlate0
@@ -87,14 +80,23 @@ class MusicPlateView: UIView {
         color7.setStroke()
         path7.stroke()
         
+        makeCircular(rect)
+    }
+    
+    private func makeCircular(_ rect: CGRect) {
+        let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
+        let startAngle: CGFloat = 0
+        let endAngle: CGFloat = 2 * .pi
+        let radius: CGFloat = (bounds.width / 2) / 8
+        
         let path8 = UIBezierPath(arcCenter: center,
-                                radius: radius,
-            startAngle: startAngle,
-            endAngle: endAngle,
-            clockwise: true)
-
+                                 radius: radius,
+                                 startAngle: startAngle,
+                                 endAngle: endAngle,
+                                 clockwise: true)
+        
         path8.lineWidth = radius
-
+        
         let color8 = UIColor.white
         color8.setStroke()
         color8.setFill()

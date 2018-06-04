@@ -23,4 +23,3 @@ class MainNavigationController: UINavigationController {
 extension MainNavigationController: StoryboardInstanceable {
     static var storyboardName: StoryboardList = .main
 }
-

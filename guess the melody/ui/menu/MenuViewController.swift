@@ -25,7 +25,7 @@ class MenuViewController: UIViewController {
             progressBackgroundView.backgroundColor = Colors.mainTextColor
         }
     }
-    private var progressView = UIView(frame: CGRect(x: 0, y: 0, width:0 , height: 6))
+    private var progressView = UIView(frame: CGRect(x: 0, y: 0, width:0, height: 6))
     
     @IBOutlet weak var scoreLabel: UILabel! {
         didSet {

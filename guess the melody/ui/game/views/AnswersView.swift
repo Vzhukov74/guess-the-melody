@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 class AnswersView: UIView {
 
@@ -127,15 +128,15 @@ class AnswersView: UIView {
     private func spin(view: UIView) {
         UIView.animate(withDuration: 0.2, animations: {
             view.transform = CGAffineTransform(rotationAngle: .pi)
-        }) { (_) in
+        }, completion: { (_) in
             UIView.animate(withDuration: 0.2) {
                 view.transform = CGAffineTransform(rotationAngle: 0)
             }
-        }
+        })
     }
-    
+
     private func shake(view: UIView) {
-        
+
     }
     
     private func hideAnswers(completion: (() -> Void)?) {
@@ -145,9 +146,9 @@ class AnswersView: UIView {
             self.answer2ViewCenterConstrain.constant = UIScreen.main.bounds.width
             self.answer3ViewCenterConstrain.constant = -UIScreen.main.bounds.width
             self.layoutIfNeeded()
-        }) { (_) in
+        }, completion: { (_) in
             completion?()
-        }
+        })
     }
     
     private func unhideAnswers(data: [GTMAnswerData]) {
@@ -204,7 +205,8 @@ class AnswersView: UIView {
         guard userDidSwap != nil, !isLock else { return }
         
         if swapIsLock {
-            self.shake(view: self.swapButton)
+            SwiftyBeaver.debug("add here shake animation!")
+            //self.shake(view: self.swapButton)
         } else {
             if self.userDidSwap!() {
                 self.spin(view: self.swapButton)

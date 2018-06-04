@@ -37,7 +37,6 @@ class GameViewController: UIViewController {
     @IBOutlet weak var answersLabel: UILabel!
     @IBOutlet weak var loadingLabel: UILabel!
 
-    
     private let rightAnswerView = RightAnswerView()
     private var rightAnswerViewBottomConstrain = NSLayoutConstraint()
     
@@ -68,12 +67,6 @@ class GameViewController: UIViewController {
             self?.hideWrongAnswerView()
         }
         
-        model.updateTime = { [weak self] (time) in
-            DispatchQueue.main.async {
-                self?.timeLabel.text = time
-            }
-        }
-        
         answersView.userDidAnswer = { [unowned self] (index) in
             return self.useDidAnswer(index: index)
         }
@@ -82,6 +75,30 @@ class GameViewController: UIViewController {
             return self.useDidSwap()
         }
         
+        setUpModel()
+        
+        self.view.addSubview(activity)
+        model.startGame()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        answersView.isHidden = false
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configurePlayAndPauseButton()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        model.stopGame()
+        answersView.isHidden = true
+    }
+    
+    private func setUpModel() {
         model.updateUI = { [weak self] (swap, life, rightAnswers) in
             guard let `self` = self else { return }
             
@@ -107,7 +124,7 @@ class GameViewController: UIViewController {
         
         model.startStopSpin = { [weak self] (isSpinning) in
             if isSpinning {
-               self?.startSpin()
+                self?.startSpin()
             } else {
                 self?.stopSpin()
             }
@@ -119,26 +136,13 @@ class GameViewController: UIViewController {
         
         model.gameOver = { [weak self] isUserWin in
             self?.showWinOrLoseVC(isUserWin: isUserWin)
-        }        
-        self.view.addSubview(activity)
-        model.startGame()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        answersView.isHidden = false
+        }
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        configurePlayAndPauseButton()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        model.stopGame()
-        answersView.isHidden = true
+        model.updateTime = { [weak self] (time) in
+            DispatchQueue.main.async {
+                self?.timeLabel.text = time
+            }
+        }
     }
 
     private func showWinOrLoseVC(isUserWin: Bool) {
@@ -295,4 +299,3 @@ extension GameViewController {
 extension GameViewController: StoryboardInstanceable {
     static var storyboardName: StoryboardList = .game
 }
-

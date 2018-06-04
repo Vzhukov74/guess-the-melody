@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension GTMQuestionCD: EntityCreating {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<GTMQuestionCD> {

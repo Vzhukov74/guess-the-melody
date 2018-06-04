@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension GTMLevelCD: EntityCreating {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<GTMLevelCD> {

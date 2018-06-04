@@ -15,11 +15,11 @@ class GTMCameLevel {
     var timeToAnswer: Int = 0
     var numberOfAnswers: Int = 0
     var numberOfQuestions: Int = 0
-    var levelStat: GTMLevelStat? = nil
+    var levelStat: GTMLevelStat?
     var isPassed: Bool = false
     var isOpen: Bool = true
     
-    func setData(id : Int, life : Int, swaps : Int, timeToAnswer : Int, numberOfAnswers : Int, numberOfQuestions : Int) {
+    func setData(id: Int, life: Int, swaps: Int, timeToAnswer: Int, numberOfAnswers: Int, numberOfQuestions: Int) {
         self.id = id
         self.life = life
         self.swaps = swaps

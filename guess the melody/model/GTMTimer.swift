@@ -110,7 +110,7 @@ class GTMTimer {
         _state = .suspended
         
         _timer?.suspend()
-        _totalElapsed = _totalElapsed + (CACurrentMediaTime() - (_start ?? CFTimeInterval(0)))
+        _totalElapsed += (CACurrentMediaTime() - (_start ?? CFTimeInterval(0)))
         _start = nil
     }
     

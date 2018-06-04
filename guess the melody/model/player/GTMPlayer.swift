@@ -55,7 +55,7 @@ class GTMPlayer {
         self.delegate?.startLoad()
         self.setActivityIndicator(isVisible: true)
         
-        dataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+        dataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
             self?.setActivityIndicator(isVisible: false)
             do {
                 if let _data = data {

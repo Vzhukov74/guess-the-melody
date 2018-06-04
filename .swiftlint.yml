@@ -1,0 +1,40 @@
+disabled_rules:
+- line_length
+- colon
+- trailing_whitespace
+- force_cast
+- force_try
+- variable_name
+- type_name
+- control_statement
+- implicit_getter
+- function_parameter_count
+
+excluded:
+- Carthage
+- Pods
+- guess the melody/developer/NVActivityIndicatorView
+
+included:
+- guess the melody
+- guess the melody/database
+- guess the melody/model
+- guess the melody/model/managers
+- guess the melody/model/player
+- guess the melody/model/menu model
+- guess the melody/model/game models
+- guess the melody/model/data models
+- guess the melody/developer
+- guess the melody/developer/extensions
+- guess the melody/ui
+- guess the melody/ui/game
+- guess the melody/ui/game/level end vc
+- guess the melody/ui/game/views
+- guess the melody/ui/menu
+- guess the melody/ui/menu/cell
+- guess the melody/ui/main
+- guess the melody/ui/common
+
+function_body_length:
+  warning: 50
+  error: 60

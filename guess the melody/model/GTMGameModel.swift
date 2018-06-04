@@ -76,7 +76,7 @@ class GTMGameModel: NSObject {
                 timer?.pause()
             case .none:
                 return
-            case .some(_):
+            case .some:
                 return
             }
         }
