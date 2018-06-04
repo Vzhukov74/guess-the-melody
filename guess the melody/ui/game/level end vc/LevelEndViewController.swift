@@ -19,11 +19,13 @@ class LevelEndViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var playAgainOrNext: UIButton! {
         didSet {
+            playAgainOrNext.layer.cornerRadius = 4
             playAgainOrNext.addTarget(self, action: #selector(self.playAgainOrNextAction), for: .touchUpInside)
         }
     }
     @IBOutlet weak var goToMenu: UIButton! {
         didSet {
+            goToMenu.layer.cornerRadius = 4
             goToMenu.addTarget(self, action: #selector(self.goToMenuAction), for: .touchUpInside)
         }
     }

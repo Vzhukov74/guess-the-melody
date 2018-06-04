@@ -79,8 +79,8 @@ class AnswersView: UIView {
     
     private func configureButton() {
         swapButton.setTitle("swap", for: .normal)
-        swapButton.titleLabel?.font = GTMFonts.sfProDisplayRegular_16
-        swapButton.tintColor = Colors.mainTextColor
+        swapButton.titleLabel?.font = GTMFonts.sfProDisplayBold_16
+        swapButton.setTitleColor(Colors.alertBackground, for: .normal)
         swapButton.addTarget(self, action: #selector(self.useDidSwap), for: .touchUpInside)
     }
     
