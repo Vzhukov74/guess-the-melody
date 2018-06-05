@@ -138,6 +138,7 @@
                     <connections>
                         <outlet property="goToMenu" destination="fRa-B8-wwe" id="1q2-a2-nrp"/>
                         <outlet property="playAgainOrNext" destination="ieg-yq-erA" id="gl0-uV-DSz"/>
+                        <outlet property="resultLabel" destination="WT1-Bz-YKJ" id="o48-dg-Rdo"/>
                         <outlet property="starImg1" destination="0pl-uP-dtl" id="Chh-Uy-Iot"/>
                         <outlet property="starImg2" destination="9DW-bl-1Wv" id="KeX-z6-cPf"/>
                         <outlet property="starImg3" destination="VpM-1y-MpE" id="pv3-nI-X5s"/>

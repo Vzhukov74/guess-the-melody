@@ -31,6 +31,7 @@ class LevelEndViewController: UIViewController {
     }
     
     @IBOutlet weak var titleImage: UIImageView!
+    @IBOutlet weak var resultLabel: UILabel!
     
     @IBOutlet weak var starImg1: UIImageView! {
         didSet {
@@ -69,12 +70,16 @@ class LevelEndViewController: UIViewController {
     }
     
     private func configureAsWinVC() {
+        resultLabel.isHidden = false
+        titleLabel.text = "You Win!"
         titleImage.image = Images.winUnicorn
         playAgainOrNext.setTitle("Go to Next Level!", for: .normal)
         configureStar(stars: result?.stars ?? 0)
     }
     
     private func configureAsLoseVC() {
+        resultLabel.isHidden = true
+        titleLabel.text = "You Lose!"
         titleImage.image = Images.loseUnicorn
         playAgainOrNext.setTitle("Play Again", for: .normal)
     }
