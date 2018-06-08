@@ -26,7 +26,7 @@ class RightAnswerView: UIView {
     }
     
     private func setup() {
-        backgroundColor = Colors.alertBackground
+        backgroundColor = Colors.alertWinBackground
         
         self.addSubview(nextButton)
         self.addSubview(titleLabel)

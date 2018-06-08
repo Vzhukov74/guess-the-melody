@@ -53,7 +53,7 @@ class GameViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.configurePlayAndPauseButton), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         self.view.backgroundColor = Colors.background
-        activity.color = Colors.alertBackground
+        activity.color = Colors.alertLoseBackground
         
         setupRightAnswerView()
         rightAnswerView.nextAction = { [weak self] in
@@ -146,13 +146,13 @@ class GameViewController: UIViewController {
     }
 
     private func showWinOrLoseVC(isUserWin: Bool) {
-        hideRightAnswerView()
-        hideWrongAnswerView()
-        
         if let vc = LevelEndViewController.storyboardInstance {
             vc.result = model.getResult()
             vc.isUserWin = isUserWin
             vc.completion = { [weak self] action in
+                self?.hideRightAnswerView()
+                self?.hideWrongAnswerView()
+                
                 switch action {
                 case .goToMenu:
                     self?.navigationController?.popToRootViewController(animated: true)
@@ -161,7 +161,6 @@ class GameViewController: UIViewController {
                 case .palyAgain:
                     self?.playAgain()
                 }
-                
             }
             present(vc, animated: true, completion: nil)
         }

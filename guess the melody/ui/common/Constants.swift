@@ -21,7 +21,8 @@ class Colors {
     static let mainTextColor = UIColor(hexStr: "34405A")
     
     static let background = UIColor(hexStr: "F8EBEF")
-    static let alertBackground = UIColor(hexStr: "F2333B")
+    static let alertWinBackground = UIColor(hexStr: "61A418")
+    static let alertLoseBackground = UIColor(hexStr: "F2333B")
     static let starOn = UIColor(hexStr: "F2333B")//UIColor(hexStr: "ec572e")
     static let starOff = UIColor(hexStr: "34405A")//UIColor(hexStr: "221e22")
     static let starHidden = UIColor.clear//(hexStr: "eaa63b")

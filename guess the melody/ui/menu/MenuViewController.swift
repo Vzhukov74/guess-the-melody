@@ -38,7 +38,7 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        progressView.backgroundColor = Colors.alertBackground
+        progressView.backgroundColor = Colors.alertLoseBackground
         self.view.backgroundColor = Colors.background
         navigationController?.navigationBar.isHidden = true
         

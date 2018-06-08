@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,19 +19,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start label" translatesAutoresizingMaskIntoConstraints="NO" id="jFa-vX-2KY">
-                                <rect key="frame" x="97" y="321" width="180" height="24"/>
+                                <rect key="frame" x="97" y="361.5" width="180" height="24"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start icon" translatesAutoresizingMaskIntoConstraints="NO" id="GWM-iH-ICX">
-                                <rect key="frame" x="60" y="36" width="255" height="269"/>
+                                <rect key="frame" x="60" y="50" width="255" height="295.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.92156862745098034" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="GWM-iH-ICX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="0Y3-Mc-W8q"/>
+                            <constraint firstItem="GWM-iH-ICX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="0Y3-Mc-W8q"/>
                             <constraint firstItem="GWM-iH-ICX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="FOd-wM-nNd"/>
                             <constraint firstItem="jFa-vX-2KY" firstAttribute="top" secondItem="GWM-iH-ICX" secondAttribute="bottom" constant="16" id="Nip-rZ-7GH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GWM-iH-ICX" secondAttribute="trailing" constant="60" id="Zrh-bn-IPX"/>
-                            <constraint firstItem="jFa-vX-2KY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="m0z-bH-5R0"/>
+                            <constraint firstItem="GWM-iH-ICX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Qu9-oq-Xbm"/>
+                            <constraint firstItem="jFa-vX-2KY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="40" id="m0z-bH-5R0"/>
                             <constraint firstItem="jFa-vX-2KY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xtV-dQ-ql0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

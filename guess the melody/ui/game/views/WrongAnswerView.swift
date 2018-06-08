@@ -26,7 +26,7 @@ class WrongAnswerView: UIView {
     }
     
     private func setup() {
-        backgroundColor = Colors.alertBackground
+        backgroundColor = Colors.alertLoseBackground
         
         self.addSubview(nextButton)
         self.addSubview(titleLabel)
