@@ -75,7 +75,7 @@ class GameViewController: UIViewController {
             return self.useDidSwap()
         }
         
-        setUpModel()
+        model.delegate = self
         
         self.view.addSubview(activity)
         model.startGame()
@@ -96,53 +96,6 @@ class GameViewController: UIViewController {
         super.viewWillDisappear(animated)
         model.stopGame()
         answersView.isHidden = true
-    }
-    
-    private func setUpModel() {
-        model.updateUI = { [weak self] (swap, life, rightAnswers) in
-            guard let `self` = self else { return }
-            
-            let swapsTotal = self.model.swapsTotal()
-            self.answersView.configureSwapButton(swapsLeft: swap, swapsTotal: swapsTotal)
-            self.setLife(life: life)
-            self.setRightAnswers(rightAnswers: rightAnswers)
-            
-            self.setQuestion()
-        }
-        
-        model.startStopLoading = { [weak self] (isLoading) in
-            self?.loadingLabel.isHidden = !isLoading
-            self?.answersView.isLock = isLoading
-            if isLoading {
-                self?.activity.startAnimating()
-                self?.activity.isHidden = false
-            } else {
-                self?.activity.stopAnimating()
-                self?.activity.isHidden = true
-            }
-        }
-        
-        model.startStopSpin = { [weak self] (isSpinning) in
-            if isSpinning {
-                self?.startSpin()
-            } else {
-                self?.stopSpin()
-            }
-        }
-        
-        model.timeIsOver = { [weak self] in
-            self?.showWrongAnswerView()
-        }
-        
-        model.gameOver = { [weak self] isUserWin in
-            self?.showWinOrLoseVC(isUserWin: isUserWin)
-        }
-        
-        model.updateTime = { [weak self] (time) in
-            DispatchQueue.main.async {
-                self?.timeLabel.text = time
-            }
-        }
     }
 
     private func showWinOrLoseVC(isUserWin: Bool) {
@@ -292,6 +245,55 @@ extension GameViewController {
             self.wrongAnswerViewBottomConstrain.constant = 200
             self.view.layoutIfNeeded()
         }
+    }
+}
+
+extension GameViewController: GTMGameModelDelegate {
+    func updateUI(_ swaps: Int, _ life: Int, _ rightAnswers: Int) {
+        let swapsTotal = self.model.swapsTotal()
+        self.answersView.configureSwapButton(swapsLeft: swaps, swapsTotal: swapsTotal)
+        self.setLife(life: life)
+        self.setRightAnswers(rightAnswers: rightAnswers)
+        
+        self.setQuestion()
+    }
+    
+    func updateTime(_ time: String) {
+        DispatchQueue.main.async {
+            self.timeLabel.text = time
+        }
+    }
+    
+    func startStopSpin(_ isSpinning: Bool) {
+        if isSpinning {
+            self.startSpin()
+        } else {
+            self.stopSpin()
+        }
+    }
+    
+    func startStopLoading(_ isLoading: Bool) {
+        self.loadingLabel.isHidden = !isLoading
+        self.answersView.isLock = isLoading
+        if isLoading {
+            self.activity.startAnimating()
+            self.activity.isHidden = false
+        } else {
+            self.activity.stopAnimating()
+            self.activity.isHidden = true
+        }
+    }
+    
+    func timeIsOver() {
+        self.showWrongAnswerView()
+    }
+    
+    func gameOver(_ isUserWin: Bool) {
+        self.showWinOrLoseVC(isUserWin: isUserWin)
+    }
+    
+    func itWasLastLevel() {
+        
     }
 }
 

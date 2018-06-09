@@ -15,4 +15,7 @@ enum GTMGameState {
     case prepareCountdown
     case countdown
     case stop
+    case timeIsOver
+    case didSwap
+    case didAnswer
 }

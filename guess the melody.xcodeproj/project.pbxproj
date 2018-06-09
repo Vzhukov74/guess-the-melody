@@ -22,6 +22,7 @@
 		046A769020C03E8E005CC175 /* GTMLevelsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A768F20C03E8E005CC175 /* GTMLevelsManager.swift */; };
 		046A769220C03EB9005CC175 /* GTMQuestionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A769120C03EB9005CC175 /* GTMQuestionsManager.swift */; };
 		046D83A720C5654400020825 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 046D83A620C5654400020825 /* .swiftlint.yml */; };
+		04B2330320CC0E7900DD1102 /* GTMGameStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2330220CC0E7900DD1102 /* GTMGameStateManager.swift */; };
 		04B944CA20BD767E00356E84 /* LevelEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B944C920BD767E00356E84 /* LevelEndViewController.swift */; };
 		04B944CC20BD768B00356E84 /* LevelEndViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B944CB20BD768B00356E84 /* LevelEndViewController.storyboard */; };
 		CF3585AC57C2668A8E4C74E5 /* Pods_guess_the_melody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */; };
@@ -126,6 +127,7 @@
 		046A768F20C03E8E005CC175 /* GTMLevelsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMLevelsManager.swift; sourceTree = "<group>"; };
 		046A769120C03EB9005CC175 /* GTMQuestionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMQuestionsManager.swift; sourceTree = "<group>"; };
 		046D83A620C5654400020825 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		04B2330220CC0E7900DD1102 /* GTMGameStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMGameStateManager.swift; sourceTree = "<group>"; };
 		04B944C920BD767E00356E84 /* LevelEndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelEndViewController.swift; sourceTree = "<group>"; };
 		04B944CB20BD768B00356E84 /* LevelEndViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LevelEndViewController.storyboard; sourceTree = "<group>"; };
 		1930C1C2485FECD5B5333751 /* Pods-guess the melody.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guess the melody.debug.xcconfig"; path = "Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody.debug.xcconfig"; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				F5C0C73C20A320F700C7BBAF /* GTMGameState.swift */,
 				F5C0C73E20A3260100C7BBAF /* GTMTimer.swift */,
 				046A768A20C00BB6005CC175 /* GTMGameSoundEngine.swift */,
+				04B2330220CC0E7900DD1102 /* GTMGameStateManager.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				F5C0C73D20A320F700C7BBAF /* GTMGameState.swift in Sources */,
 				04B944CA20BD767E00356E84 /* LevelEndViewController.swift in Sources */,
 				F5187FEE20AB140F0026C1C7 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
+				04B2330320CC0E7900DD1102 /* GTMGameStateManager.swift in Sources */,
 				F54A4D8C20A9AFC200BB480D /* LevelCell.swift in Sources */,
 				F50BFE8D209C875A002B299A /* MenuViewController.swift in Sources */,
 				F5C0C73420A3204600C7BBAF /* GTMHelper.swift in Sources */,
