@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 import SwiftyBeaver
 
 class GameViewController: UIViewController {
@@ -45,7 +44,7 @@ class GameViewController: UIViewController {
     
     var model: GTMGameModel!
     
-    private let activity = NVActivityIndicatorView(frame: CGRect(x: (UIScreen.main.bounds.width / 2) - 10, y: 30, width: 20, height: 20), type: .lineScale, color: UIColor.red, padding: 1)
+    private let activity = NVActivityIndicatorView(frame: CGRect(x: (UIScreen.main.bounds.width / 2) - 10, y: 36, width: 20, height: 20), type: .lineScale, color: UIColor.red, padding: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -221,7 +220,7 @@ class GameViewController: UIViewController {
 extension GameViewController {
     private func showRightAnswerView() {
         UIView.animate(withDuration: 0.3) {
-            self.rightAnswerViewBottomConstrain.constant = -4
+            self.rightAnswerViewBottomConstrain.constant = -20
             self.view.layoutIfNeeded()
         }
     }
@@ -235,7 +234,7 @@ extension GameViewController {
     
     private func showWrongAnswerView() {
         UIView.animate(withDuration: 0.3) {
-            self.wrongAnswerViewBottomConstrain.constant = -4
+            self.wrongAnswerViewBottomConstrain.constant = -20
             self.view.layoutIfNeeded()
         }
     }
