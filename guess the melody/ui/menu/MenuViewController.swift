@@ -110,7 +110,7 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let backgroundView = UIView(frame: CGRect.zero)
         backgroundView.backgroundColor = UIColor.clear
-        
+
         cell.backgroundView = backgroundView
         cell.backgroundColor = UIColor.clear
     }

@@ -83,6 +83,7 @@ class GTMPlayer {
     }
     
     deinit {
+        setActivityIndicator(isVisible: false)
         print("deinit - GTMPlayer")
     }
 }

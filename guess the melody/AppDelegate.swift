@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //setStatusBarBackgroundColor()
         
+        //UIApplication.shared.statusBarStyle = .lightContent
+        
         return true
     }
     
