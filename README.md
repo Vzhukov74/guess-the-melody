@@ -3,6 +3,13 @@ Unicorn Melody
 
 It is simple game!
 
+
+<p align="left">
+    <img src="https://github.com/Vzhukov74/guess-the-melody/blob/master/screens/available.png?raw=true" width="200">
+</p>
+
+[DOWNLOAD](https://itunes.apple.com/ru/app/unicorn-melody/id1390221210?mt=8)
+
 ## Screens 
 <p align="center">
     <img src="https://github.com/Vzhukov74/guess-the-melody/blob/master/screens/1.png?raw=true" width="200">
