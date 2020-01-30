@@ -25,7 +25,6 @@
 		04B2330320CC0E7900DD1102 /* GTMGameStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2330220CC0E7900DD1102 /* GTMGameStateManager.swift */; };
 		04B944CA20BD767E00356E84 /* LevelEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B944C920BD767E00356E84 /* LevelEndViewController.swift */; };
 		04B944CC20BD768B00356E84 /* LevelEndViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B944CB20BD768B00356E84 /* LevelEndViewController.storyboard */; };
-		CF3585AC57C2668A8E4C74E5 /* Pods_guess_the_melody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */; };
 		F50BFE6D209C85E4002B299A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE6C209C85E4002B299A /* AppDelegate.swift */; };
 		F50BFE75209C85E4002B299A /* guess_the_melody.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F50BFE73209C85E4002B299A /* guess_the_melody.xcdatamodeld */; };
 		F50BFE77209C85E8002B299A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50BFE76209C85E8002B299A /* Assets.xcassets */; };
@@ -130,9 +129,6 @@
 		04B2330220CC0E7900DD1102 /* GTMGameStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMGameStateManager.swift; sourceTree = "<group>"; };
 		04B944C920BD767E00356E84 /* LevelEndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelEndViewController.swift; sourceTree = "<group>"; };
 		04B944CB20BD768B00356E84 /* LevelEndViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LevelEndViewController.storyboard; sourceTree = "<group>"; };
-		1930C1C2485FECD5B5333751 /* Pods-guess the melody.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guess the melody.debug.xcconfig"; path = "Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody.debug.xcconfig"; sourceTree = "<group>"; };
-		6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guess_the_melody.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0155088689067CA543C698E /* Pods-guess the melody.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guess the melody.release.xcconfig"; path = "Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody.release.xcconfig"; sourceTree = "<group>"; };
 		F50BFE69209C85E4002B299A /* guess the melody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "guess the melody.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50BFE6C209C85E4002B299A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F50BFE74209C85E4002B299A /* guess_the_melody.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = guess_the_melody.xcdatamodel; sourceTree = "<group>"; };
@@ -226,7 +222,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF3585AC57C2668A8E4C74E5 /* Pods_guess_the_melody.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,23 +268,6 @@
 			path = "level end vc";
 			sourceTree = "<group>";
 		};
-		137850A83F818ABA05FE395D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1930C1C2485FECD5B5333751 /* Pods-guess the melody.debug.xcconfig */,
-				C0155088689067CA543C698E /* Pods-guess the melody.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		66F74D26641EF6DF06CE903A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6E101CA9FA0B07513666E572 /* Pods_guess_the_melody.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F50BFE60209C85E4002B299A = {
 			isa = PBXGroup;
 			children = (
@@ -304,8 +282,6 @@
 				F5118EA720A1D31D00C2D023 /* GTMQuestionCD+CoreDataProperties.swift */,
 				F50BFE6B209C85E4002B299A /* guess the melody */,
 				F50BFE6A209C85E4002B299A /* Products */,
-				137850A83F818ABA05FE395D /* Pods */,
-				66F74D26641EF6DF06CE903A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -563,11 +539,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F50BFE7E209C85E8002B299A /* Build configuration list for PBXNativeTarget "guess the melody" */;
 			buildPhases = (
-				8048D92A781ECE5E5D988838 /* [CP] Check Pods Manifest.lock */,
 				F50BFE65209C85E4002B299A /* Sources */,
 				F50BFE66209C85E4002B299A /* Frameworks */,
 				F50BFE67209C85E4002B299A /* Resources */,
-				851ADFA4073A1E9635CEA572 /* [CP] Embed Pods Frameworks */,
 				046D83A520C5651100020825 /* SwiftLint */,
 			);
 			buildRules = (
@@ -591,6 +565,7 @@
 				TargetAttributes = {
 					F50BFE68209C85E4002B299A = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -654,42 +629,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		8048D92A781ECE5E5D988838 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-guess the melody-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		851ADFA4073A1E9635CEA572 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-guess the melody/Pods-guess the melody-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -914,7 +853,6 @@
 		};
 		F50BFE7F209C85E8002B299A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1930C1C2485FECD5B5333751 /* Pods-guess the melody.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -927,14 +865,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "md.guess-the-melody";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		F50BFE80209C85E8002B299A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0155088689067CA543C698E /* Pods-guess the melody.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -947,7 +884,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "md.guess-the-melody";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

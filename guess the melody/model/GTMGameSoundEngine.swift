@@ -9,7 +9,6 @@
 import Foundation
 import AVFoundation
 import AudioToolbox
-import SwiftyBeaver
 
 class GTMSoundConfig {
     //private static let soundConfigKey = "ru.soundConfigKey"
@@ -54,7 +53,7 @@ class GTMGameSoundEngine {
         if GTMSoundConfig.isSoundOn() {
             queue.async {
                 do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)))
                     try AVAudioSession.sharedInstance().setActive(true)
                     
                     try self.player = AVAudioPlayer(contentsOf: melodyURL)
@@ -64,7 +63,7 @@ class GTMGameSoundEngine {
                         self.vibration()
                     }
                 } catch {
-                    SwiftyBeaver.error(error.localizedDescription)
+                    print(error.localizedDescription)
                 }
             }
         }
@@ -83,4 +82,9 @@ class GTMGameSoundEngine {
     private func vibration() {
         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }

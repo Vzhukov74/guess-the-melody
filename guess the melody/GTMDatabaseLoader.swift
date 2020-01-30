@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyBeaver
 import CoreData
 
 class GTMDatabaseLoader {
@@ -19,7 +18,7 @@ class GTMDatabaseLoader {
         if UserDefaults.standard.object(forKey: GTMDatabaseLoader.firstStartKeyQuestions) != nil {
             return
         } else {
-            SwiftyBeaver.debug("it is first start")
+            print("it is first start")
             UserDefaults.standard.set(true, forKey: GTMDatabaseLoader.firstStartKeyQuestions)
         }
         
@@ -35,10 +34,10 @@ class GTMDatabaseLoader {
                 }
                 GTMDatabaseLoader.saveInDB(questions: questions)
             } else {
-               SwiftyBeaver.error("did't parse questions json file")
+               print("did't parse questions json file")
             }
         } else {
-            SwiftyBeaver.error("did't load questions json file")
+            print("did't load questions json file")
         }
     }
     
@@ -46,7 +45,7 @@ class GTMDatabaseLoader {
         if UserDefaults.standard.object(forKey: GTMDatabaseLoader.firstStartKeyLevels) != nil {
             return
         } else {
-            SwiftyBeaver.debug("it is first start")
+            print("it is first start")
             UserDefaults.standard.set(true, forKey: GTMDatabaseLoader.firstStartKeyLevels)
         }
         
@@ -68,10 +67,10 @@ class GTMDatabaseLoader {
                 }
                 GTMDatabaseLoader.saveInDB(levels: levels)
             } else {
-                SwiftyBeaver.error("did't parse questions json file")
+                print("did't parse questions json file")
             }
         } else {
-            SwiftyBeaver.error("did't load levels json file")
+            print("did't load levels json file")
         }
     }
     
@@ -123,7 +122,7 @@ class GTMDatabaseLoader {
         do {
             try context.save()
         } catch {
-            SwiftyBeaver.error(error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
     
@@ -154,7 +153,7 @@ class GTMDatabaseLoader {
         do {
             try context.save()
         } catch {
-            SwiftyBeaver.error(error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
 }

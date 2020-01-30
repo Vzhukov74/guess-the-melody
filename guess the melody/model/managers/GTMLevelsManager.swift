@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import SwiftyBeaver
 
 class GTMLevelsManager {
     static let shared = GTMLevelsManager()
@@ -23,9 +22,9 @@ class GTMLevelsManager {
         do {
             try fetchedResultsController.performFetch()
             self.levels = fetchedResultsController.fetchedObjects as? [GTMLevelCD] ?? [GTMLevelCD]()
-            SwiftyBeaver.debug("number of levels is \(levels.count)")
+            print("number of levels is \(levels.count)")
         } catch {
-            SwiftyBeaver.error(error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
     

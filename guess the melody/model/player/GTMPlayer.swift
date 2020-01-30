@@ -8,7 +8,7 @@
 
 import Foundation
 import AVFoundation
-import SwiftyBeaver
+import UIKit
 
 protocol GTMPlayerDelegate: class {
     func startLoad()
@@ -70,7 +70,7 @@ class GTMPlayer {
                 }
             } catch {
                 self?.delegate?.error()
-                SwiftyBeaver.error(error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
         dataTask?.resume()

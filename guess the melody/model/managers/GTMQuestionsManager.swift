@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import SwiftyBeaver
 
 class GTMQuestionsManager {
     
@@ -25,9 +24,9 @@ class GTMQuestionsManager {
         do {
             try fetchedResultsController.performFetch()
             self._questions = fetchedResultsController.fetchedObjects as? [GTMQuestionCD] ?? [GTMQuestionCD]()
-            SwiftyBeaver.debug("number of questions is \(_questions.count)")
+            print("number of questions is \(_questions.count)")
         } catch {
-            SwiftyBeaver.error(error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
     

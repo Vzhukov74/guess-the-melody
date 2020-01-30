@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyBeaver
 import CoreData
 
 class GTMCoreDataManager {
@@ -22,7 +21,7 @@ class GTMCoreDataManager {
     
     lazy var managedObjectModel: NSManagedObjectModel = {
         let modelURL = Bundle.main.url(forResource: "guess_the_melody", withExtension: "momd")!
-        SwiftyBeaver.debug(modelURL.absoluteString)
+        print(modelURL.absoluteString)
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
     
