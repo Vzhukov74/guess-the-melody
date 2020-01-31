@@ -38,14 +38,29 @@ class GTMSoundConfig {
 //    }
 }
 
-class GTMGameSound {
-    static let countdown = NSURL(fileURLWithPath: Bundle.main.path(forResource: "countdown", ofType: "wav")!) as URL
-    static let wrongAnswer = NSURL(fileURLWithPath: Bundle.main.path(forResource: "error", ofType: "wav")!) as URL
-    static let correctAnswer = NSURL(fileURLWithPath: Bundle.main.path(forResource: "okay", ofType: "wav")!) as URL
-    static let levelPass = NSURL(fileURLWithPath: Bundle.main.path(forResource: "levelup", ofType: "mp3")!) as URL
+class GameSound {
+    
 }
 
-class GTMGameSoundEngine {
+enum Sound {
+    case countdown
+    case wrongAnswer
+    case correctAnswer
+    case levelPass
+}
+
+extension Sound {
+    var url: URL {
+        switch self {
+        case .countdown: return NSURL(fileURLWithPath: Bundle.main.path(forResource: "countdown", ofType: "wav")!) as URL
+        case .wrongAnswer: return NSURL(fileURLWithPath: Bundle.main.path(forResource: "error", ofType: "wav")!) as URL
+        case .correctAnswer: return NSURL(fileURLWithPath: Bundle.main.path(forResource: "okay", ofType: "wav")!) as URL
+        case .levelPass: return NSURL(fileURLWithPath: Bundle.main.path(forResource: "levelup", ofType: "mp3")!) as URL
+        }
+    }
+}
+
+class SoundEngine {
     private var player: AVAudioPlayer?
     private let queue = DispatchQueue(label: "md.vz.audio")
 
@@ -53,7 +68,7 @@ class GTMGameSoundEngine {
         if GTMSoundConfig.isSoundOn() {
             queue.async {
                 do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)))
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: AVAudioSession.Category.playback.rawValue))
                     try AVAudioSession.sharedInstance().setActive(true)
                     
                     try self.player = AVAudioPlayer(contentsOf: melodyURL)
@@ -84,7 +99,8 @@ class GTMGameSoundEngine {
     }
 }
 
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
-	return input.rawValue
+extension SoundEngine {
+    func play(melody: Sound, isVibrationActice: Bool = false) {
+        self.play(melodyURL: melody.url, isVibrationActice: isVibrationActice)
+    }
 }

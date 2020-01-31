@@ -17,7 +17,7 @@
 		046A768520C00B25005CC175 /* error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 046A767E20C00B25005CC175 /* error.wav */; };
 		046A768820C00B25005CC175 /* countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 046A768120C00B25005CC175 /* countdown.wav */; };
 		046A768920C00B25005CC175 /* okay.wav in Resources */ = {isa = PBXBuildFile; fileRef = 046A768220C00B25005CC175 /* okay.wav */; };
-		046A768B20C00BB6005CC175 /* GTMGameSoundEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A768A20C00BB6005CC175 /* GTMGameSoundEngine.swift */; };
+		046A768B20C00BB6005CC175 /* SoundEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A768A20C00BB6005CC175 /* SoundEngine.swift */; };
 		046A768D20C01428005CC175 /* LabelsSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A768C20C01428005CC175 /* LabelsSetting.swift */; };
 		046A769020C03E8E005CC175 /* GTMLevelsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A768F20C03E8E005CC175 /* GTMLevelsManager.swift */; };
 		046A769220C03EB9005CC175 /* GTMQuestionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A769120C03EB9005CC175 /* GTMQuestionsManager.swift */; };
@@ -121,7 +121,7 @@
 		046A767E20C00B25005CC175 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
 		046A768120C00B25005CC175 /* countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countdown.wav; sourceTree = "<group>"; };
 		046A768220C00B25005CC175 /* okay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = okay.wav; sourceTree = "<group>"; };
-		046A768A20C00BB6005CC175 /* GTMGameSoundEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMGameSoundEngine.swift; sourceTree = "<group>"; };
+		046A768A20C00BB6005CC175 /* SoundEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEngine.swift; sourceTree = "<group>"; };
 		046A768C20C01428005CC175 /* LabelsSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsSetting.swift; sourceTree = "<group>"; };
 		046A768F20C03E8E005CC175 /* GTMLevelsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMLevelsManager.swift; sourceTree = "<group>"; };
 		046A769120C03EB9005CC175 /* GTMQuestionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMQuestionsManager.swift; sourceTree = "<group>"; };
@@ -411,7 +411,7 @@
 				F5C0C73A20A320B800C7BBAF /* GTMCameLevelManager.swift */,
 				F5C0C73C20A320F700C7BBAF /* GTMGameState.swift */,
 				F5C0C73E20A3260100C7BBAF /* GTMTimer.swift */,
-				046A768A20C00BB6005CC175 /* GTMGameSoundEngine.swift */,
+				046A768A20C00BB6005CC175 /* SoundEngine.swift */,
 				04B2330220CC0E7900DD1102 /* GTMGameStateManager.swift */,
 			);
 			path = model;
@@ -675,7 +675,7 @@
 				F54A4D8C20A9AFC200BB480D /* LevelCell.swift in Sources */,
 				F50BFE8D209C875A002B299A /* MenuViewController.swift in Sources */,
 				F5C0C73420A3204600C7BBAF /* GTMHelper.swift in Sources */,
-				046A768B20C00BB6005CC175 /* GTMGameSoundEngine.swift in Sources */,
+				046A768B20C00BB6005CC175 /* SoundEngine.swift in Sources */,
 				F5187FFB20AB140F0026C1C7 /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
 				F5187FEF20AB140F0026C1C7 /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */,
 				F50BFE9E209C8B18002B299A /* CellExt.swift in Sources */,

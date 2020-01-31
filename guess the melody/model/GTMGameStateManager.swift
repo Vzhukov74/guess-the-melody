@@ -16,7 +16,7 @@ protocol GTMGameStateManagerDelegate: class {
 
 class GTMGameStateManager {
     private var timer: GTMTimer?
-    private let countdownPlayer = GTMGameSoundEngine()
+    private let countdownPlayer = SoundEngine()
     private let player = GTMPlayer()
     private let songTime: Int
     
@@ -63,7 +63,7 @@ class GTMGameStateManager {
                 }
                 self.setNew(state: .countdown)
             case .countdown:
-                countdownPlayer.play(melodyURL: GTMGameSound.countdown)
+                countdownPlayer.play(melody: .countdown)
                 self.delegate?.setUIFor(state: .countdown)
                 timer?.toggle()
             case .stop:

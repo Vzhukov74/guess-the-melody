@@ -22,7 +22,7 @@ protocol GTMGameModelDelegate: class {
 }
 
 class GTMGameModel {
-    private let soundEngine = GTMGameSoundEngine()
+    private let soundEngine = SoundEngine()
     private let questionStore = GTMQuestionsManager()
     private var level: GTMGameLevelManager!
     
@@ -46,7 +46,7 @@ class GTMGameModel {
         
         self.level.didEndGame = { [weak self] isUserWin in
             if isUserWin {
-                self?.soundEngine.play(melodyURL: GTMGameSound.levelPass, isVibrationActice: true)
+                self?.soundEngine.play(melody: .levelPass, isVibrationActice: true)
             }
             self?.delegate?.gameOver(isUserWin)
         }
@@ -132,13 +132,13 @@ class GTMGameModel {
         let isCorrect = (answer.songUrl == currentQuestion.rightAnswer!.songUrl)
         
         if isCorrect {
-            soundEngine.play(melodyURL: GTMGameSound.correctAnswer)
+            soundEngine.play(melody: .correctAnswer)
             DispatchQueue.main.async {
                 self.questionStore.setQuestionAsPassed(question: self.question)
             }
             level.userDidRightAnswer()
         } else {
-            soundEngine.play(melodyURL: GTMGameSound.wrongAnswer)
+            soundEngine.play(melody: .wrongAnswer)
             level.userDidWrongAnswer()
         }
         return isCorrect
