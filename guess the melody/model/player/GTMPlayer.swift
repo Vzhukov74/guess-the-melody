@@ -6,9 +6,8 @@
 //  Copyright © 2018 VZ. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import AVFoundation
-import SwiftyBeaver
 
 protocol GTMPlayerDelegate: class {
     func startLoad()
@@ -70,7 +69,7 @@ class GTMPlayer {
                 }
             } catch {
                 self?.delegate?.error()
-                SwiftyBeaver.error(error.localizedDescription)
+                //SwiftyBeaver.error(error.localizedDescription)
             }
         }
         dataTask?.resume()

@@ -8,21 +8,14 @@
 
 import UIKit
 import CoreData
-import SwiftyBeaver
-
-private let log = SwiftyBeaver.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        //init SwiftyBeaver
-        let console = ConsoleDestination()
-        log.addDestination(console)
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+                
         GTMDatabaseLoader.loadQuestions()
         GTMDatabaseLoader.loadLevels()
         

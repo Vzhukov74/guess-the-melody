@@ -6,8 +6,7 @@
 //  Copyright © 2018 VZ. All rights reserved.
 //
 
-import Foundation
-import SwiftyBeaver
+import UIKit
 
 typealias GTMAnswerData = (songName: String, authorName: String)
 
@@ -51,7 +50,7 @@ class GTMGameModel {
             self?.delegate?.gameOver(isUserWin)
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.stopGame), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.stopGame), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     func setNextLevel() {

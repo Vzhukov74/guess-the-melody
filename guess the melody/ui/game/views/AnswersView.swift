@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyBeaver
 
 class AnswersView: UIView {
 
@@ -205,7 +204,7 @@ class AnswersView: UIView {
         guard userDidSwap != nil, !isLock else { return }
         
         if swapIsLock {
-            SwiftyBeaver.debug("add here shake animation!")
+            //SwiftyBeaver.debug("add here shake animation!")
             //self.shake(view: self.swapButton)
         } else {
             if self.userDidSwap!() {

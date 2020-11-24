@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyBeaver
 
 protocol GTMGameStateManagerDelegate: class {
     func setUIFor(state: GTMGameState)
@@ -134,6 +133,6 @@ extension GTMGameStateManager: GTMPlayerDelegate {
     }
     
     func error() {
-        SwiftyBeaver.error("player load with error")
+        //SwiftyBeaver.error("player load with error")
     }
 }

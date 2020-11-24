@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyBeaver
 
 class GTMStaticDataStore {
     static func openLevelsJsonFileFor(name: String) -> Data? {
@@ -16,7 +15,7 @@ class GTMStaticDataStore {
         do {
             text = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
         } catch {
-            SwiftyBeaver.error(error.localizedDescription)
+            //SwiftyBeaver.error(error.localizedDescription)
         }
         let data = text.data(using: String.Encoding.utf8)
         return data
@@ -32,7 +31,7 @@ class GTMStaticDataStore {
             let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions() ) as? [String: AnyObject]
             return json
         } catch {
-            SwiftyBeaver.error(error.localizedDescription)
+            //SwiftyBeaver.error(error.localizedDescription)
             return nil
         }
     }

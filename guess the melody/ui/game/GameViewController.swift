@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyBeaver
 
 class GameViewController: UIViewController {
 
@@ -49,7 +48,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.configurePlayAndPauseButton), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.configurePlayAndPauseButton), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         self.view.backgroundColor = Colors.background
         activity.color = Colors.alertLoseBackground

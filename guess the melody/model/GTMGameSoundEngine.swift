@@ -6,10 +6,9 @@
 //  Copyright © 2018 VZ. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import AVFoundation
 import AudioToolbox
-import SwiftyBeaver
 
 class GTMSoundConfig {
     //private static let soundConfigKey = "ru.soundConfigKey"
@@ -54,7 +53,7 @@ class GTMGameSoundEngine {
         if GTMSoundConfig.isSoundOn() {
             queue.async {
                 do {
-                    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    //try AVAudioSession.sharedInstance()//.setCategoryconvertFromAVAudioSessionCategory(AVAudioSession.Category.playback)
                     try AVAudioSession.sharedInstance().setActive(true)
                     
                     try self.player = AVAudioPlayer(contentsOf: melodyURL)
@@ -64,7 +63,7 @@ class GTMGameSoundEngine {
                         self.vibration()
                     }
                 } catch {
-                    SwiftyBeaver.error(error.localizedDescription)
+                    //SwiftyBeaver.error(error.localizedDescription)
                 }
             }
         }
@@ -84,3 +83,8 @@ class GTMGameSoundEngine {
         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
     }
 }
+
+// Helper function inserted by Swift 4.2 migrator.
+//fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+//	return input.rawValue
+//}
